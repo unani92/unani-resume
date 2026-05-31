@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper);font-family:var(--font-sans);color:var(--ink);padding:24px 28px;}
+  .row{display:flex;gap:16px;}
+  .item{flex:1;border-radius:var(--r-md);border:1px solid;padding:14px 16px;}
+  .dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle;}
+  .lab{font-size:14px;font-weight:600;display:inline-block;vertical-align:middle;}
+  .hx{font-family:var(--font-mono,monospace);font-size:11px;color:var(--ink-3);margin-top:8px;}
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item" style="background:var(--success-soft);border-color:#cfe4cf">
+      <span class="dot" style="background:var(--success)"></span><span class="lab" style="color:var(--success)">성공 Success</span>
+      <div class="hx">#4A8A5C</div>
+    </div>
+    <div class="item" style="background:var(--warn-soft);border-color:#ecdcb0">
+      <span class="dot" style="background:var(--warn)"></span><span class="lab" style="color:var(--warn)">주의 Warning</span>
+      <div class="hx">#C0810F</div>
+    </div>
+    <div class="item" style="background:var(--danger-soft);border-color:#eccabf">
+      <span class="dot" style="background:var(--danger)"></span><span class="lab" style="color:var(--danger)">오류 Danger</span>
+      <div class="hx">#C24A38</div>
+    </div>
+  </div>
+</body>
+</html>

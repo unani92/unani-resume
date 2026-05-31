@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper);font-family:var(--font-sans);color:var(--ink);padding:26px 30px;}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+  .tag{font-family:var(--font-mono);font-size:12px;font-weight:500;border-radius:var(--r-xs);padding:4px 10px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line);}
+  .pill{border-radius:var(--r-pill);padding:4px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:7px;height:7px;border-radius:50%;}
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="tag">TypeScript</span>
+    <span class="tag">React</span>
+    <span class="tag">Node.js</span>
+    <span class="tag">AWS</span>
+    <span class="tag" style="background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent-line)">PostgreSQL</span>
+  </div>
+  <div class="row">
+    <span class="pill" style="background:var(--success-soft);color:var(--success)"><span class="dot" style="background:var(--success)"></span>재직 중</span>
+    <span class="pill" style="background:var(--accent-soft);color:var(--accent-ink)"><span class="dot" style="background:var(--accent)"></span>구직 중</span>
+    <span class="pill" style="background:var(--surface-2);color:var(--ink-3)">사이드 프로젝트</span>
+  </div>
+</body>
+</html>

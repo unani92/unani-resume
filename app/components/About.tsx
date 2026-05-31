@@ -5,98 +5,34 @@ const groups = [
   { k: "Infra", v: ["AWS", "Kubernetes", "Terraform", "Grafana"] },
 ];
 
-const overlineStyle = {
-  fontFamily: "var(--font-mono)",
-  fontSize: 12,
-  fontWeight: 600,
-  letterSpacing: ".14em",
-  textTransform: "uppercase" as const,
-  color: "var(--ink-3)",
-};
-
 export default function About() {
   return (
-    <section
-      id="about"
-      style={{
-        background: "var(--paper-sunk)",
-        borderTop: "1px solid var(--line)",
-        borderBottom: "1px solid var(--line)",
-      }}
-    >
-      <div
-        style={{
-          padding: "clamp(40px,7vw,80px) clamp(20px,6vw,64px)",
-          maxWidth: 1100,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1.3fr",
-          gap: "clamp(32px,6vw,72px)",
-        }}
-      >
+    <section id="about" className="bg-[var(--paper-sunk)] border-t border-b border-[var(--line)]">
+      <div className="about-inner px-fluid">
         <div>
-          <div style={overlineStyle}>About</div>
-          <div
-            style={{
-              height: 2,
-              width: 44,
-              background: "var(--line-ink)",
-              margin: "12px 0 18px",
-            }}
-          />
-          <p
-            style={{
-              font: "400 17px/1.75 var(--font-sans)",
-              color: "var(--ink-2)",
-              margin: 0,
-            }}
-          >
+          <div className="overline">About</div>
+          <div className="h-0.5 w-11 bg-[var(--line-ink)] mt-3 mb-[18px]" />
+          <p className="text-[17px] leading-[1.75] text-[var(--ink-2)] m-0">
             장애가 나지 않는 시스템보다,{" "}
-            <b style={{ color: "var(--ink)" }}>장애에서 빠르게 회복하는</b>{" "}
+            <b className="text-[var(--ink)]">장애에서 빠르게 회복하는</b>{" "}
             시스템을 믿습니다. 관측 가능성과 단순한 설계로 팀이 밤에 잘 자게
             만드는 일을 합니다.
           </p>
-          <p
-            style={{
-              font: "400 15px/1.7 var(--font-sans)",
-              color: "var(--ink-3)",
-              marginTop: 18,
-            }}
-          >
+          <p className="text-[15px] leading-[1.7] text-[var(--ink-3)] mt-[18px] mb-0">
             주말에는 작은 사이드 프로젝트를 만들고, 좋은 개발 문화에 대한 글을
             씁니다.
           </p>
         </div>
 
-        <div
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22 }}
-        >
+        <div className="grid grid-cols-2 gap-[22px]">
           {groups.map((g) => (
             <div key={g.k}>
-              <div
-                style={{
-                  ...overlineStyle,
-                  fontSize: 11,
-                  color: "var(--accent)",
-                  marginBottom: 10,
-                }}
-              >
-                {g.k}
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+              <div className="overline text-[11px] text-[var(--accent)] mb-[10px]">{g.k}</div>
+              <div className="flex flex-wrap gap-[7px]">
                 {g.v.map((s) => (
                   <span
                     key={s}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12.5,
-                      fontWeight: 500,
-                      padding: "5px 11px",
-                      borderRadius: "var(--r-xs)",
-                      background: "var(--surface)",
-                      color: "var(--ink-2)",
-                      border: "1px solid var(--line)",
-                    }}
+                    className="[font-family:var(--font-mono)] text-[12.5px] font-medium px-[11px] py-[5px] rounded-[var(--r-xs)] bg-[var(--surface)] text-[var(--ink-2)] border border-[var(--line)]"
                   >
                     {s}
                   </span>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper);font-family:var(--font-sans);color:var(--ink);padding:24px 30px;display:flex;gap:24px;align-items:center;}
+  .pf{width:104px;height:104px;border-radius:var(--r-lg);object-fit:cover;border:1px solid var(--line);box-shadow:var(--shadow-sm);flex:none;}
+  .pf.circle{border-radius:var(--r-pill);}
+  .pf.duo{filter:grayscale(.3) brightness(1.04) contrast(1.0);}
+  .cap{font-family:var(--font-mono);font-size:11px;color:var(--ink-4);margin-top:8px;text-align:center;}
+  .item{display:flex;flex-direction:column;align-items:center;}
+</style>
+</head>
+<body>
+  <div class="item"><img class="pf" src="../assets/portrait-bright.jpeg" alt=""><div class="cap">rounded</div></div>
+  <div class="item"><img class="pf circle" src="../assets/portrait-bright.jpeg" alt=""><div class="cap">circle</div></div>
+  <div class="item"><img class="pf duo" src="../assets/portrait-bright.jpeg" alt=""><div class="cap">neutral grade</div></div>
+  <div style="max-width:230px;font-size:13px;line-height:1.6;color:var(--ink-3);">초상은 유일한 사진 요소입니다. 중립적인 톤을 유지하고, 컬러 필터를 입히지 않습니다.</div>
+</body>
+</html>

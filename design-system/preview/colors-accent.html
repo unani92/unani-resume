@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper);font-family:var(--font-mono,monospace);color:var(--ink);padding:24px 28px;}
+  .row{display:flex;gap:14px;align-items:flex-start;}
+  .sw{flex:1;}
+  .chip{height:72px;border-radius:var(--r-sm);border:1px solid rgba(42,36,32,.08);display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;}
+  .nm{font-size:11px;margin-top:8px;color:var(--ink-2);}
+  .hx{font-size:10px;color:var(--ink-4);}
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--accent-soft)"></div><div class="nm">accent-soft</div><div class="hx">#F8E9E1</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-line)"></div><div class="nm">accent-line</div><div class="hx">#EFCDBE</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-hover)"></div><div class="nm">accent-hover</div><div class="hx">#E0795C</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent);color:#fff;font-size:11px;">Aa</div><div class="nm" style="color:var(--accent);font-weight:600">accent</div><div class="hx">#D2674A</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-ink);color:#fff;font-size:11px;">Aa</div><div class="nm">accent-ink</div><div class="hx">#B14E34</div></div>
+  </div>
+</body>
+</html>

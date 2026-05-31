@@ -37,160 +37,57 @@ const projects = [
   },
 ];
 
-const overlineStyle = {
-  fontFamily: "var(--font-mono)",
-  fontSize: 12,
-  fontWeight: 600,
-  letterSpacing: ".14em",
-  textTransform: "uppercase" as const,
-  color: "var(--ink-3)",
-};
-
 export default function Projects() {
   const [open, setOpen] = useState<number>(0);
 
   return (
-    <section
-      id="work"
-      style={{
-        padding: "clamp(40px,7vw,80px) clamp(20px,6vw,64px)",
-        maxWidth: 1100,
-        margin: "0 auto",
-      }}
-    >
-      <div style={overlineStyle}>Selected Work</div>
-      <div
-        style={{
-          height: 2,
-          width: 44,
-          background: "var(--line-ink)",
-          margin: "12px 0 4px",
-        }}
-      />
-      <h2
-        style={{
-          font: "700 clamp(26px,3vw,36px)/1.15 var(--font-sans)",
-          letterSpacing: "-0.02em",
-          margin: "14px 0 30px",
-        }}
-      >
+    <section id="work" className="section-wrap px-fluid">
+      <div className="overline">Selected Work</div>
+      <div className="h-0.5 w-11 bg-[var(--line-ink)] mt-3 mb-1" />
+      <h2 className="text-[clamp(26px,3vw,36px)] font-bold leading-[1.15] tracking-[-0.02em] mt-[14px] mb-[30px]">
         프로젝트
       </h2>
-      <div style={{ display: "grid", gap: 14 }}>
+      <div className="grid gap-[14px]">
         {projects.map((p, i) => {
           const isOpen = open === i;
           return (
             <div
               key={i}
               onClick={() => setOpen(isOpen ? -1 : i)}
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--line)",
-                borderRadius: "var(--r-md)",
-                padding: "22px 24px",
-                cursor: "pointer",
-                boxShadow: isOpen ? "var(--shadow-md)" : "var(--shadow-xs)",
-                transition: "box-shadow var(--dur) var(--ease)",
-              }}
+              className={`bg-[var(--surface)] border border-[var(--line)] rounded-[var(--r-md)] p-[22px_24px] cursor-pointer [transition:box-shadow_var(--dur)_var(--ease)] ${
+                isOpen ? "shadow-[var(--shadow-md)]" : "shadow-[var(--shadow-xs)]"
+              }`}
             >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "baseline",
-                  gap: 16,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    gap: 14,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <span
-                    style={{
-                      ...overlineStyle,
-                      color: "var(--accent)",
-                      fontSize: 11,
-                    }}
-                  >
-                    {p.tag}
-                  </span>
-                  <h3
-                    style={{
-                      margin: 0,
-                      font: "700 21px/1.3 var(--font-sans)",
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
+              <div className="flex justify-between items-baseline gap-4">
+                <div className="flex items-baseline gap-[14px] flex-wrap">
+                  <span className="overline text-[11px] text-[var(--accent)]">{p.tag}</span>
+                  <h3 className="m-0 text-[21px] font-bold leading-[1.3] tracking-[-0.01em]">
                     {p.title}
                   </h3>
                 </div>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 13,
-                    color: "var(--ink-4)",
-                    flex: "none",
-                  }}
-                >
+                <span className="[font-family:var(--font-mono)] text-[13px] text-[var(--ink-4)] shrink-0">
                   {p.year}
                 </span>
               </div>
               <div
-                style={{
-                  display: "grid",
-                  gridTemplateRows: isOpen ? "1fr" : "0fr",
-                  transition: "grid-template-rows var(--dur-slow) var(--ease)",
-                }}
+                className={`grid [transition:grid-template-rows_var(--dur-slow)_var(--ease)] ${
+                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                }`}
               >
-                <div style={{ overflow: "hidden" }}>
-                  <p
-                    style={{
-                      margin: "14px 0 14px",
-                      font: "400 15px/1.65 var(--font-sans)",
-                      color: "var(--ink-2)",
-                      maxWidth: 620,
-                    }}
-                  >
+                <div className="overflow-hidden">
+                  <p className="my-[14px] text-[15px] leading-[1.65] text-[var(--ink-2)] max-w-[620px]">
                     {p.desc}
                   </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: 8,
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                    }}
-                  >
+                  <div className="flex gap-2 items-center flex-wrap">
                     {p.stack.map((s) => (
                       <span
                         key={s}
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: 12,
-                          fontWeight: 500,
-                          padding: "4px 10px",
-                          borderRadius: "var(--r-xs)",
-                          background: "var(--surface-2)",
-                          color: "var(--ink-2)",
-                          border: "1px solid var(--line)",
-                        }}
+                        className="[font-family:var(--font-mono)] text-[12px] font-medium px-[10px] py-1 rounded-[var(--r-xs)] bg-[var(--surface-2)] text-[var(--ink-2)] border border-[var(--line)]"
                       >
                         {s}
                       </span>
                     ))}
-                    <span
-                      style={{
-                        marginLeft: "auto",
-                        fontFamily: "var(--font-mono)",
-                        fontWeight: 600,
-                        fontSize: 13,
-                        color: "var(--accent)",
-                      }}
-                    >
+                    <span className="ml-auto [font-family:var(--font-mono)] font-semibold text-[13px] text-[var(--accent)]">
                       {p.metric}
                     </span>
                   </div>

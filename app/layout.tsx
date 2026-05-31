@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${pretendard.variable} ${jetbrainsMono.variable}`}>
-      <body style={{ fontFamily: "var(--font-sans)" }}>{children}</body>
+      <body className="[font-family:var(--font-sans)]">{children}</body>
     </html>
   );
 }
