@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core palette — Warm Editorial */
+  --paper:        #FAF6EF;
+  --paper-sunk:   #F2ECE0;
+  --surface:      #FFFDF9;
+  --surface-2:    #F4EFE6;
+
+  --ink:          #2A2420;
+  --ink-2:        #574E47;
+  --ink-3:        #7C726A;
+  --ink-4:        #A99E94;
+
+  --line:         #E8DFD1;
+  --line-strong:  #D8CCB9;
+  --line-ink:     #2A2420;
+
+  /* Accent — friendly terracotta */
+  --accent:       #D2674A;
+  --accent-ink:   #B14E34;
+  --accent-hover: #E0795C;
+  --accent-soft:  #F8E9E1;
+  --accent-line:  #EFCDBE;
+  --on-accent:    #FFFCF8;
+
+  /* Semantic */
+  --success:      #4A8A5C;
+  --success-soft: #E7F1E6;
+  --warn:         #C0810F;
+  --warn-soft:    #FAF0DA;
+  --danger:       #C24A38;
+  --danger-soft:  #FAE8E2;
+
+  /* Radii */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   14px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 999px;
+
+  /* Spacing (4pt base) */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* Shadows — soft, warm-tinted */
+  --shadow-xs:   0 1px 2px rgba(42, 36, 32, 0.05);
+  --shadow-sm:   0 1px 3px rgba(42, 36, 32, 0.07), 0 1px 2px rgba(42, 36, 32, 0.04);
+  --shadow-md:   0 6px 16px rgba(42, 36, 32, 0.08), 0 2px 4px rgba(42, 36, 32, 0.04);
+  --shadow-lg:   0 16px 40px rgba(42, 36, 32, 0.12), 0 4px 10px rgba(42, 36, 32, 0.05);
+  --shadow-ring: 0 0 0 3px rgba(210, 103, 74, 0.20);
+
+  /* Motion */
+  --ease:        cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:    120ms;
+  --dur:         200ms;
+  --dur-slow:    360ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.overline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
 }
