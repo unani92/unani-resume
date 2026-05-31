@@ -58,6 +58,16 @@ React 컴포넌트 작성·리팩터링 시 `.agents/skills/vercel-react-best-pr
 
 ---
 
+# 프로필 컨텍스트
+
+컴포넌트 내용 수정·이력서 업데이트·자기소개 문구 작성 시 `.agents/skills/yoonhwan-profile` 스킬을 참조할 것.
+실제 이력, 기술스택, 프로젝트 정보가 정리되어 있다.
+
+**동기화 규칙**: `Hero`, `About`, `Projects`, `Footer` 컴포넌트의 내용(수치, 기술스택, 경력 등)을 수정할 때는
+`.agents/skills/yoonhwan-profile/SKILL.md` 도 반드시 함께 업데이트할 것.
+
+---
+
 # 디자인 시스템
 
 `design-system/ui_kits/portfolio/` — 포트폴리오 페이지 컴포넌트 레퍼런스 JSX

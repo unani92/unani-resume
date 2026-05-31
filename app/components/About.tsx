@@ -1,8 +1,10 @@
 const groups = [
-  { k: "Languages", v: ["Kotlin", "Go", "TypeScript", "Java", "Python"] },
-  { k: "Backend", v: ["Spring", "Node.js", "gRPC", "GraphQL"] },
-  { k: "Data", v: ["PostgreSQL", "Redis", "Kafka", "Elasticsearch"] },
-  { k: "Infra", v: ["AWS", "Kubernetes", "Terraform", "Grafana"] },
+  { k: "Languages", v: ["JavaScript", "TypeScript"] },
+  { k: "Frameworks", v: ["React", "Next.js", "Vue", "Nuxt", "React Native"] },
+  { k: "Styling", v: ["Tailwind CSS", "SCSS", "Emotion"] },
+  { k: "Data / State", v: ["React-Query", "GraphQL", "Zustand", "Redux"] },
+  { k: "Backend", v: ["Node.js", "NestJS", "Prisma", "MySQL"] },
+  { k: "Infra", v: ["AWS", "Vercel", "Firebase", "Supabase",] },
 ];
 
 export default function About() {
@@ -13,14 +15,13 @@ export default function About() {
           <div className="overline">About</div>
           <div className="h-0.5 w-11 bg-[var(--line-ink)] mt-3 mb-[18px]" />
           <p className="text-[17px] leading-[1.75] text-[var(--ink-2)] m-0">
-            장애가 나지 않는 시스템보다,{" "}
-            <b className="text-[var(--ink)]">장애에서 빠르게 회복하는</b>{" "}
-            시스템을 믿습니다. 관측 가능성과 단순한 설계로 팀이 밤에 잘 자게
-            만드는 일을 합니다.
+            사용자와 가장 가까운 곳에서 일합니다.{" "}
+            <b className="text-[var(--ink)]">React/Next.js 기반 스타트업 실서비스</b>를
+            다수 경험하며, 기능 개발부터 배포·운영까지 전반을 담당해 왔습니다.
           </p>
           <p className="text-[15px] leading-[1.7] text-[var(--ink-3)] mt-[18px] mb-0">
-            주말에는 작은 사이드 프로젝트를 만들고, 좋은 개발 문화에 대한 글을
-            씁니다.
+            좋은 UX는 좋은 코드에서 나온다고 믿습니다. 주말엔 FC서울 팬 커뮤니티
+            사이트를 직접 만들고 운영합니다.
           </p>
         </div>
 

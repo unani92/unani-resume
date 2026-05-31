@@ -1,22 +1,38 @@
 const skills = [
-  { k: "Languages", v: "Kotlin · Go · TypeScript · Java" },
-  { k: "Backend", v: "Spring · Node.js · gRPC · GraphQL" },
-  { k: "Data", v: "PostgreSQL · Redis · Kafka" },
-  { k: "Infra", v: "AWS · Kubernetes · Terraform" },
+  { k: "Languages", v: "JavaScript · TypeScript" },
+  { k: "Frameworks", v: "React · Next.js · Vue · Nuxt · React Native" },
+  { k: "Styling", v: "Tailwind CSS · SCSS · Emotion" },
+  { k: "Data / State", v: "React-Query · GraphQL · Zustand · Redux" },
+  { k: "Backend", v: "Node.js · NestJS · Prisma · MySQL" },
+  { k: "Infra", v: "AWS · Vercel · Firebase · Supabase" },
 ];
 
 const edu = [
   {
-    d: "2016 — 2020",
-    t: "한국대학교 컴퓨터공학",
-    s: "학사 · GPA 3.8 / 4.5",
+    d: "2013.03 — 2017.02",
+    t: "건국대학교(서울) 기술경영학과",
+    s: "학사 졸업",
+  },
+  {
+    d: "2020.01 — 2020.10",
+    t: "삼성청년소프트웨어아카데미",
+    s: "SSAFY 3기 수료",
+  },
+];
+
+const projects = [
+  {
+    t: "FC서울 수호신 커뮤니티",
+    v: "fcseoul12.com",
+    href: "https://www.fcseoul12.com",
+    s: "Next.js 14 · Tailwind · Prisma · Redis",
+    m: "DAU 최다 2,300",
   },
 ];
 
 const links = [
-  { v: "github.com/yunhwan" },
-  { v: "yunhwan.dev" },
-  { v: "blog.yunhwan.dev" },
+  { v: "github.com/unani92", href: "https://github.com/unani92" },
+  { v: "unani9292@gmail.com", href: "mailto:unani9292@gmail.com" },
 ];
 
 const labelStyle = {
@@ -32,7 +48,7 @@ export default function SideRail() {
     <aside style={{ display: "grid", gap: 28, alignContent: "start" }}>
       <div>
         <div style={labelStyle}>Skills</div>
-        <div style={{ display: "grid", gap: 12 }}>
+        <div style={{ display: "grid", gap: 10 }}>
           {skills.map((s) => (
             <div key={s.k}>
               <div style={{ fontSize: 12.5, fontWeight: 700, color: "var(--ink)" }}>
@@ -56,27 +72,73 @@ export default function SideRail() {
 
       <div>
         <div style={labelStyle}>Education</div>
-        {edu.map((e) => (
-          <div key={e.t}>
-            <div
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11.5,
-                color: "var(--ink-4)",
-              }}
-            >
-              {e.d}
+        <div style={{ display: "grid", gap: 14 }}>
+          {edu.map((e) => (
+            <div key={e.t}>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11.5,
+                  color: "var(--ink-4)",
+                }}
+              >
+                {e.d}
+              </div>
+              <div
+                style={{ fontSize: 13.5, fontWeight: 700, color: "var(--ink)", marginTop: 3 }}
+              >
+                {e.t}
+              </div>
+              <div style={{ fontSize: 12.5, color: "var(--ink-3)", marginTop: 2 }}>
+                {e.s}
+              </div>
             </div>
-            <div
-              style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", marginTop: 3 }}
-            >
-              {e.t}
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div style={labelStyle}>Side Project</div>
+        <div style={{ display: "grid", gap: 12 }}>
+          {projects.map((p) => (
+            <div key={p.t}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: 13.5,
+                  fontWeight: 700,
+                  color: "var(--ink)",
+                  textDecoration: "none",
+                }}
+              >
+                {p.t}
+              </a>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  color: "var(--accent)",
+                  marginTop: 2,
+                }}
+              >
+                {p.m}
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11.5,
+                  color: "var(--ink-4)",
+                  marginTop: 3,
+                  lineHeight: 1.5,
+                }}
+              >
+                {p.s}
+              </div>
             </div>
-            <div style={{ fontSize: 12.5, color: "var(--ink-3)", marginTop: 2 }}>
-              {e.s}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div>
@@ -85,7 +147,7 @@ export default function SideRail() {
           {links.map((l) => (
             <a
               key={l.v}
-              href="#"
+              href={l.href}
               style={{
                 display: "inline-flex",
                 alignItems: "center",

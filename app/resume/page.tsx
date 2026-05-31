@@ -7,7 +7,7 @@ import SideRail from "./components/SideRail";
 
 export const metadata: Metadata = {
   title: "정윤환 · 이력서",
-  description: "정윤환 백엔드 엔지니어 이력서",
+  description: "정윤환 프론트엔드 개발자 이력서 — React/Next.js 5년 경력",
 };
 
 export default function ResumePage() {
@@ -35,7 +35,7 @@ export default function ResumePage() {
           }}
         >
           <div>
-            <Section label="Experience" sub="4 yrs">
+            <Section label="Experience" sub="5+ yrs">
               <Experience />
             </Section>
           </div>

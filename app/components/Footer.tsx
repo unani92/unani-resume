@@ -1,7 +1,7 @@
 const links = [
   { label: "unani9292@gmail.com", href: "mailto:unani9292@gmail.com" },
-  { label: "github.com/yunhwan", href: "https://github.com" },
-  { label: "linkedin.com/in/yunhwan", href: "https://linkedin.com" },
+  { label: "github.com/unani92", href: "https://github.com/unani92" },
+  { label: "010-4906-3273", href: "tel:+821049063273" },
 ];
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
     <footer id="contact" className="footer-wrap px-fluid text-center">
       <div className="overline">Get in touch</div>
       <h2 className="text-[clamp(30px,4.5vw,52px)] font-extrabold leading-[1.1] tracking-[-0.03em] mt-[18px] mb-0 text-[var(--ink)]">
-        함께 좋은 시스템을
+        함께 좋은 서비스를
         <br />
         만들어요<span className="text-[var(--accent)]">.</span>
       </h2>
@@ -31,8 +31,8 @@ export default function Footer() {
         ))}
       </div>
       <div className="mt-[56px] pt-6 border-t border-[var(--line)] flex justify-between items-center [font-family:var(--font-mono)] text-[12px] text-[var(--ink-4)] flex-wrap gap-[10px]">
-        <span>정윤환 · Jeong Yunhwan</span>
-        <span>© 2025 · Built with Pretendard</span>
+        <span>정윤환 · Yoonhwan Jung</span>
+        <span>© 2025 · Built with Next.js & Pretendard</span>
       </div>
     </footer>
   );

@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const meta = [
-  { label: "unani9292@gmail.com" },
+  { label: "unani9292@gmail.com", href: "mailto:unani9292@gmail.com" },
   { label: "Seoul, KR" },
-  { label: "github.com/yunhwan" },
+  { label: "github.com/unani92", href: "https://github.com/unani92" },
 ];
 
 export default function ResumeHeader() {
@@ -41,7 +41,7 @@ export default function ResumeHeader() {
             color: "var(--accent)",
           }}
         >
-          Backend Engineer
+          FrontEnd Developer
         </div>
         <h1
           style={{
@@ -61,7 +61,7 @@ export default function ResumeHeader() {
               letterSpacing: 0,
             }}
           >
-            Jeong Yunhwan
+            Yoonhwan Jung
           </span>
         </h1>
         <p
@@ -72,26 +72,44 @@ export default function ResumeHeader() {
             maxWidth: 560,
           }}
         >
-          결제·정산 도메인에서 안정적인 분산 시스템을 설계해 온 4년 차 백엔드
-          개발자입니다. 단순한 설계와 관측 가능성으로 운영 부담을 줄이는 일을
-          좋아합니다.
+          React/Next.js 기반 스타트업 실서비스를 다수 경험한 5년 차 프론트엔드
+          개발자입니다. 사용자와 가장 가까운 곳에서 실제로 쓰이는 서비스를
+          만드는 것을 좋아합니다.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 20px" }}>
-          {meta.map((m) => (
-            <span
-              key={m.label}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                fontFamily: "var(--font-mono)",
-                fontSize: 12.5,
-                color: "var(--ink-3)",
-              }}
-            >
-              {m.label}
-            </span>
-          ))}
+          {meta.map((m) =>
+            m.href ? (
+              <a
+                key={m.label}
+                href={m.href}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 7,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12.5,
+                  color: "var(--ink-3)",
+                  textDecoration: "none",
+                }}
+              >
+                {m.label}
+              </a>
+            ) : (
+              <span
+                key={m.label}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 7,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12.5,
+                  color: "var(--ink-3)",
+                }}
+              >
+                {m.label}
+              </span>
+            )
+          )}
         </div>
       </div>
     </header>

@@ -1,30 +1,57 @@
 const roles = [
   {
-    company: "토스페이먼츠",
-    role: "Backend Engineer · 결제 정산",
-    period: "2022.03 — 현재",
-    stack: ["Kotlin", "Spring", "Kafka", "PostgreSQL"],
+    company: "스토어링크",
+    role: "FrontEnd Developer",
+    period: "2024.01 — 현재",
+    desc: "리뷰 체험단 플랫폼 퍼그샵(한국·일본) 운영 이커머스 마케팅 에이전시",
+    stack: ["Next.js", "TypeScript", "React-Query", "Tailwind CSS", "Zustand", "i18n"],
     bullets: [
-      "대규모 정산 배치를 스트리밍 구조로 재설계해 처리 시간을 1.2s → 0.3s로 단축",
-      "정산 불일치 자동 감지 파이프라인을 구축해 수기 점검 시간을 주 8h → 1h로 절감",
-      "온콜 알림 노이즈를 40% 줄여 팀의 야간 대응 부담을 완화",
+      "퍼그샵 한국·일본 사용자/관리자 페이지 리뉴얼 프론트엔드 개발",
+      "i18n 다국어 처리로 KO/JP 동시 운영 효율화 및 공통 컴포넌트 설계",
+      "기능 개발 및 유지보수 전반 담당",
     ],
   },
   {
-    company: "카카오 (플랫폼)",
-    role: "Software Engineer · API Platform",
-    period: "2020.01 — 2022.02",
-    stack: ["Go", "gRPC", "Redis", "Kubernetes"],
+    company: "슬릭코퍼레이션",
+    role: "FrontEnd Developer",
+    period: "2022.05 — 2023.10",
+    desc: "피트니스 CRM '하이파이브' 및 강사-회원 커머스 플랫폼 운영 스타트업",
+    stack: ["Next.js", "TypeScript", "GraphQL", "Emotion", "React-Query", "Firebase", "Vercel"],
     bullets: [
-      "12개 서비스 공통 인증·레이트리밋을 단일 게이트웨이로 통합",
-      "분산 트레이싱을 표준화해 장애 원인 추적 시간을 평균 35분 → 8분으로 단축",
+      "하이파이브 어드민 페이지 기능 개발 및 유지보수",
+      "하이파이브 마켓 앱 내 웹뷰 커머스 플랫폼 MVP 단독 개발 완료",
+    ],
+  },
+  {
+    company: "바닐라브릿지",
+    role: "FrontEnd Developer",
+    period: "2021.01 — 2022.05",
+    desc: "소개팅 서비스 '바닐라브릿지', 4050 전용 앱 '반쪽' 운영 스타트업",
+    stack: ["Vue", "Nuxt.js", "React Native", "JavaScript", "SCSS", "Firebase", "AWS S3"],
+    bullets: [
+      "바닐라브릿지 앱 내 웹뷰 및 주선자 PC/모바일 클라이언트 비즈니스 로직 구현",
+      "신규 앱 '반쪽' React Native + 웹뷰 개발 및 실서비스 배포",
+      "AWS CLI를 통한 SPA 빌드 배포 자동화",
+      "Firebase BigQuery 이벤트 로깅 및 Hackle A/B 테스트 환경 구축",
+      "Airbridge SDK 연동을 통한 마케팅 성과 측정 환경 구성",
+    ],
+  },
+  {
+    company: "자이냅스",
+    role: "FrontEnd Developer",
+    period: "2020.10 — 2020.12",
+    desc: "텍스트 NLU·음성합성 등 AI 기술 기반 챗봇 스타트업",
+    stack: ["Vue", "JavaScript", "SCSS", "Docker"],
+    bullets: [
+      "정부과제 '창성' 프론트엔드 전반 — 코스피 200 주가정보 분석 웹서비스 개발",
+      "Docker 패키징, Nginx 연동을 통한 사내 서버 배포",
     ],
   },
 ];
 
 export default function Experience() {
   return (
-    <div style={{ display: "grid", gap: 26 }}>
+    <div style={{ display: "grid", gap: 32 }}>
       {roles.map((r, i) => (
         <div
           key={i}
@@ -37,6 +64,7 @@ export default function Experience() {
                 fontSize: 12,
                 color: "var(--accent)",
                 fontWeight: 500,
+                lineHeight: 1.5,
               }}
             >
               {r.period}
@@ -80,6 +108,16 @@ export default function Experience() {
               }}
             >
               {r.role}
+            </div>
+            <div
+              style={{
+                fontSize: 13,
+                color: "var(--ink-4)",
+                marginTop: 5,
+                lineHeight: 1.5,
+              }}
+            >
+              {r.desc}
             </div>
             <ul
               style={{
