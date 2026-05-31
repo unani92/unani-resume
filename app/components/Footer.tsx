@@ -1,8 +1,8 @@
 const links = [
-  { label: "unani9292@gmail.com", href: "mailto:unani9292@gmail.com" },
-  { label: "github.com/unani92", href: "https://github.com/unani92" },
-  { label: "010-4906-3273", href: "tel:+821049063273" },
-];
+  { label: 'unani9292@gmail.com', href: 'mailto:unani9292@gmail.com' },
+  { label: 'github.com/unani92', href: 'https://github.com/unani92' },
+  { label: '010-4906-3273', href: 'tel:+821049063273' },
+]
 
 export default function Footer() {
   return (
@@ -35,5 +35,5 @@ export default function Footer() {
         <span>© 2025 · Built with Next.js & Pretendard</span>
       </div>
     </footer>
-  );
+  )
 }

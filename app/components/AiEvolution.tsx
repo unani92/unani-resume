@@ -1,47 +1,66 @@
-const phases = [
+type Phase = {
+  no: string
+  title: string
+  desc: string
+  example?: string
+  tags: string[]
+  current: boolean
+}
+
+const phases: Phase[] = [
   {
-    no: "01",
-    title: "첫 걸음 — 그냥 해줘",
-    desc: "단순 지시로 의도와 맞지 않는 결과물을 받으며 AI 도구의 한계를 체감. 불필요한 파일까지 context에 로드해 토큰을 낭비하는 패턴을 경험.",
-    tags: ["GitHub Copilot", "ChatGPT"],
+    no: '01',
+    title: '첫 걸음 — 그냥 해줘',
+    desc: '단순 지시로 의도와 맞지 않는 결과물을 받으며 AI 도구의 한계를 체감. 불필요한 파일까지 context에 로드해 토큰을 낭비하는 패턴을 경험.',
+    tags: ['GitHub Copilot', 'ChatGPT'],
     current: false,
   },
   {
-    no: "02",
-    title: "레퍼런스 주도 프롬프팅",
-    desc: "기존 코드·디자인 레퍼런스를 먼저 제공하고 \"이대로 적용\" 방식으로 일관성 확보. 프롬프트 품질이 결과물 품질을 결정한다는 것을 학습.",
-    tags: ["Claude", "Prompt Engineering"],
+    no: '02',
+    title: '레퍼런스 주도 프롬프팅',
+    desc: '기존 코드·디자인 레퍼런스를 먼저 제공하고 "이대로 적용" 방식으로 일관성 확보. 프롬프트 품질이 결과물 품질을 결정한다는 것을 학습.',
+    example:
+      '\'A.tsx\' 의 구조를 참고해서 "../../page/B.tsx" 를 구현해줘. 함수가 필요하면 새로 만들지 말고 utils.ts 에 기존에 만들어져 있는 함수가 있는지 먼저 확인하고 없는 경우에만 만들어줘.',
+    tags: ['Claude', 'Prompt Engineering'],
     current: false,
   },
   {
-    no: "03",
-    title: "MCP 연동 자동화",
-    desc: "Jira·GitHub·Notion·Figma MCP를 연동해 컨텍스트 수집을 자동화. Figma selection의 레이어 스타일 누락 이슈는 HTML 결과물 기반 지시 방식으로 해결.",
-    tags: ["MCP", "Figma", "Notion", "GitHub"],
+    no: '03',
+    title: 'MCP 연동 자동화',
+    desc: 'Jira·GitHub·Notion·Figma MCP를 연동해 컨텍스트 수집을 자동화. Figma selection의 레이어 스타일 누락 이슈는 HTML 결과물 기반 지시 방식으로 해결.',
+    example:
+      '(Figma copy selection 이후) 해당 링크를 바탕으로 공통으로 사용 가능한 입력창 만들어줘. 지금까지 작업물 dev 브랜치로 머지하고 description 작성해줘. 작성된 내용은 노션으로 만들어줘.',
+    tags: ['MCP', 'Figma', 'Notion', 'GitHub'],
     current: false,
   },
   {
-    no: "04",
-    title: "스킬 기반 컨텍스트 최적화",
-    desc: "CLAUDE.md에 집중된 컨텍스트를 업무별 스킬 파일로 분산. 대화가 초기화돼도 스킬 로드로 일관성 유지. MCP → Connector 표준 전환에도 빠르게 적응.",
-    tags: ["Claude Code", "Skills", "Token 최적화"],
+    no: '04',
+    title: '스킬 기반 컨텍스트 최적화',
+    desc: 'CLAUDE.md에 집중된 컨텍스트를 업무별 스킬 파일로 분산. 대화가 초기화돼도 스킬 로드로 일관성 유지. MCP → Connector 표준 전환에도 빠르게 적응.',
+    example:
+      '"/ga-analyzer" 스킬을 사용해서 성과측정 보고서를 출력하는 스크립트 만들어줘.',
+    tags: ['Claude Code', 'Skills', 'Token 최적화'],
     current: false,
   },
   {
-    no: "05",
-    title: "Harness Engineering",
-    desc: "프롬프트 엔지니어링에 하네스 엔지니어링을 접목. 린트·타입체크를 훅으로 연결해 빌드 안전성을 보장하고, 중요 비즈니스 로직엔 e2e 테스트로 자동 검증 플로우 구축.",
-    tags: ["ESLint", "TypeScript", "Playwright", "CI Hook"],
+    no: '05',
+    title: 'Harness Engineering',
+    desc: '프롬프트 엔지니어링에 하네스 엔지니어링을 접목. 린트·타입체크를 훅으로 연결해 빌드 안전성을 보장하고, 중요 비즈니스 로직엔 e2e 테스트로 자동 검증 플로우 구축.',
+    example:
+      'code-quality-guard.md 세팅을 통해 코딩 완료 후 자동으로 코드품질 관리 스크립트 러닝을 지시',
+    tags: ['ESLint', 'TypeScript', 'Playwright', 'CI Hook'],
     current: false,
   },
   {
-    no: "06",
-    title: "멀티 에이전트 아키텍처",
-    desc: "TDD 에이전트가 테스트코드를 작성하고 FE 구현 에이전트가 이를 받아 개발을 진행하는 서브 에이전트 협업 구조 운용. AI 에이전트의 발전 속도에 발맞춰 워크플로우도 계속 진화 중.",
-    tags: ["Sub-agent", "TDD", "Multi-agent", "Claude Code"],
+    no: '06',
+    title: '멀티 에이전트 아키텍처',
+    desc: 'TDD 에이전트가 테스트코드를 작성하고 FE 구현 에이전트가 이를 받아 개발을 진행하는 서브 에이전트 협업 구조 운용. AI 에이전트의 발전 속도에 발맞춰 워크플로우도 계속 진화 중.',
+    example:
+      'TDD 에이전트로 신규 컴포넌트 테스트 코드 먼저 작성하고, FE 구현 에이전트가 테스트를 통과하는 컴포넌트 개발해줘. 완료 후 code-quality-guard 에이전트로 검증해줘.',
+    tags: ['Sub-agent', 'TDD', 'Multi-agent', 'Claude Code'],
     current: true,
   },
-];
+]
 
 export default function AiEvolution() {
   return (
@@ -63,9 +82,13 @@ export default function AiEvolution() {
               </span>
             </div>
             <p className="m-0 text-[14px] leading-[1.7] text-[var(--ink-3)] pl-[18px]">
-              AI 워크플로우를 실무에 내재화해 기획·설계·구현·검증 사이클을 빠르게 반복합니다.
-              린트·타입체크·e2e 훅으로 빌드 안전성을 자동 보장하기 때문에
-              <b className="text-[var(--ink-2)]"> 개발 속도와 코드 품질을 함께 끌어올릴 수 있습니다.</b>
+              AI 워크플로우를 실무에 내재화해 기획·설계·구현·검증 사이클을
+              빠르게 반복합니다. 린트·타입체크·e2e 훅으로 빌드 안전성을 자동
+              보장하기 때문에
+              <b className="text-[var(--ink-2)]">
+                {' '}
+                개발 속도와 코드 품질을 함께 끌어올릴 수 있습니다.
+              </b>
             </p>
           </div>
           <div className="flex flex-col gap-[10px]">
@@ -76,10 +99,13 @@ export default function AiEvolution() {
               </span>
             </div>
             <p className="m-0 text-[14px] leading-[1.7] text-[var(--ink-3)] pl-[18px]">
-              특정 스택에 안주하지 않고 AI 에이전트·MCP·멀티 에이전트 아키텍처 등
-              새로운 패러다임을 실무에 직접 접목해 왔습니다.
-              <b className="text-[var(--ink-2)]"> 도구와 생태계가 빠르게 바뀌는 지금,</b> 그 변화를
-              가장 빠르게 흡수하는 개발자가 되고자 합니다.
+              특정 스택에 안주하지 않고 AI 에이전트·MCP·멀티 에이전트 아키텍처
+              등 새로운 패러다임을 실무에 직접 접목해 왔습니다.
+              <b className="text-[var(--ink-2)]">
+                {' '}
+                도구와 생태계가 빠르게 바뀌는 지금,
+              </b>{' '}
+              그 변화를 가장 빠르게 흡수하는 개발자가 되고자 합니다.
             </p>
           </div>
         </div>
@@ -90,8 +116,8 @@ export default function AiEvolution() {
               key={p.no}
               className={`relative rounded-[var(--r-md)] p-[22px_20px] border flex flex-col gap-3 ${
                 p.current
-                  ? "bg-[var(--surface)] border-[var(--accent-line)] shadow-[var(--shadow-md)]"
-                  : "bg-[var(--surface)] border-[var(--line)] shadow-[var(--shadow-xs)]"
+                  ? 'bg-[var(--surface)] border-[var(--accent-line)] shadow-[var(--shadow-md)]'
+                  : 'bg-[var(--surface)] border-[var(--line)] shadow-[var(--shadow-xs)]'
               }`}
             >
               {p.current && (
@@ -108,9 +134,24 @@ export default function AiEvolution() {
                 {p.title}
               </h3>
 
-              <p className="m-0 text-[13px] leading-[1.65] text-[var(--ink-3)] flex-1">
+              <p
+                className={`m-0 text-[13px] leading-[1.65] text-[var(--ink-3)] ${p.example ? 'min-h-[90px]' : ''}`}
+              >
                 {p.desc}
               </p>
+
+              {p.example ? (
+                <div className="rounded-[var(--r-xs)] bg-[var(--paper-sunk)] border border-[var(--line)] px-[12px] py-[10px] flex-1">
+                  <span className="block text-[10px] font-semibold [font-family:var(--font-mono)] text-[var(--ink-4)] mb-[6px] uppercase tracking-[0.06em]">
+                    사용 예시
+                  </span>
+                  <p className="m-0 text-[12px] leading-[1.6] [font-family:var(--font-mono)] text-[var(--ink-2)]">
+                    {p.example}
+                  </p>
+                </div>
+              ) : (
+                <div className="flex-1" />
+              )}
 
               <div className="flex flex-wrap gap-[6px] mt-1">
                 {p.tags.map((t) => (
@@ -118,8 +159,8 @@ export default function AiEvolution() {
                     key={t}
                     className={`[font-family:var(--font-mono)] text-[11px] font-medium px-[8px] py-[3px] rounded-[var(--r-xs)] border ${
                       p.current
-                        ? "bg-[var(--accent-soft)] text-[var(--accent-ink)] border-[var(--accent-line)]"
-                        : "bg-[var(--surface-2)] text-[var(--ink-3)] border-[var(--line)]"
+                        ? 'bg-[var(--accent-soft)] text-[var(--accent-ink)] border-[var(--accent-line)]'
+                        : 'bg-[var(--surface-2)] text-[var(--ink-3)] border-[var(--line)]'
                     }`}
                   >
                     {t}
@@ -129,8 +170,7 @@ export default function AiEvolution() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
-  );
+  )
 }

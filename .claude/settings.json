@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/unani/WebstormProjects/yoonhwan-resume-portfolio/.claude/qa-check.sh",
+            "timeout": 60,
+            "statusMessage": "QA 자동 검사: format → safe-fix → lint → typecheck 중...",
+            "asyncRewake": true,
+            "rewakeSummary": "QA 결과",
+            "rewakeMessage": "QA 자동 검사에서 오류가 발견됐습니다. **code-quality-guard 서브 에이전트**를 사용해 아래 오류를 수정해주세요:\n"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/unani/WebstormProjects/yoonhwan-resume-portfolio/.claude/qa-check.sh",
+            "timeout": 60,
+            "statusMessage": "QA 최종 검사: format → safe-fix → lint → typecheck 중...",
+            "asyncRewake": true,
+            "rewakeSummary": "QA 최종 결과",
+            "rewakeMessage": "최종 QA 검사에서 오류가 발견됐습니다. **code-quality-guard 서브 에이전트**를 사용해 아래 오류를 수정해주세요:\n"
+          }
+        ]
+      }
+    ]
+  }
+}

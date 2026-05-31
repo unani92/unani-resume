@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
 interface HeaderProps {
-  active: string;
-  onNav: (id: string) => void;
+  active: string
+  onNav: (id: string) => void
 }
 
 const NAV_LINKS = [
-  { id: "work", label: "프로젝트" },
-  { id: "about", label: "소개" },
-  { id: "contact", label: "연락처" },
-] as const;
+  { id: 'work', label: '프로젝트' },
+  { id: 'about', label: '소개' },
+  { id: 'contact', label: '연락처' },
+] as const
 
 export default function Header({ active, onNav }: HeaderProps) {
   return (
@@ -32,8 +32,8 @@ export default function Header({ active, onNav }: HeaderProps) {
             onClick={() => onNav(l.id)}
             className={`cursor-pointer text-[14px] font-semibold leading-none px-[14px] py-2 rounded-[var(--r-sm)] border-none [transition:all_var(--dur)_var(--ease)] ${
               active === l.id
-                ? "bg-[var(--surface-2)] text-[var(--ink)]"
-                : "bg-transparent text-[var(--ink-3)]"
+                ? 'bg-[var(--surface-2)] text-[var(--ink)]'
+                : 'bg-transparent text-[var(--ink-3)]'
             }`}
           >
             {l.label}
@@ -47,5 +47,5 @@ export default function Header({ active, onNav }: HeaderProps) {
         </Link>
       </nav>
     </header>
-  );
+  )
 }

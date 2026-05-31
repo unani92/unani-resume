@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -33,9 +33,15 @@ export default function Hero() {
           </a>
         </div>
         <div className="flex gap-[22px] mt-9 [font-family:var(--font-mono)] text-[13px] text-[var(--ink-3)]">
-          <span><b className="text-[var(--accent)] text-[17px]">5</b>+ yrs</span>
-          <span><b className="text-[var(--accent)] text-[17px]">4</b> companies</span>
-          <span><b className="text-[var(--accent)] text-[17px]">10</b>+ projects</span>
+          <span>
+            <b className="text-[var(--accent)] text-[17px]">5</b>+ yrs
+          </span>
+          <span>
+            <b className="text-[var(--accent)] text-[17px]">4</b> companies
+          </span>
+          <span>
+            <b className="text-[var(--accent)] text-[17px]">10</b>+ projects
+          </span>
         </div>
       </div>
 
@@ -55,5 +61,5 @@ export default function Hero() {
         </span>
       </div>
     </section>
-  );
+  )
 }

@@ -2,69 +2,72 @@
 
 :root {
   /* Core palette — Warm Editorial */
-  --paper:        #FAF6EF;
-  --paper-sunk:   #F2ECE0;
-  --surface:      #FFFDF9;
-  --surface-2:    #F4EFE6;
+  --paper: #faf6ef;
+  --paper-sunk: #f2ece0;
+  --surface: #fffdf9;
+  --surface-2: #f4efe6;
 
-  --ink:          #2A2420;
-  --ink-2:        #574E47;
-  --ink-3:        #7C726A;
-  --ink-4:        #A99E94;
+  --ink: #2a2420;
+  --ink-2: #574e47;
+  --ink-3: #7c726a;
+  --ink-4: #a99e94;
 
-  --line:         #E8DFD1;
-  --line-strong:  #D8CCB9;
-  --line-ink:     #2A2420;
+  --line: #e8dfd1;
+  --line-strong: #d8ccb9;
+  --line-ink: #2a2420;
 
   /* Accent — friendly terracotta */
-  --accent:       #D2674A;
-  --accent-ink:   #B14E34;
-  --accent-hover: #E0795C;
-  --accent-soft:  #F8E9E1;
-  --accent-line:  #EFCDBE;
-  --on-accent:    #FFFCF8;
+  --accent: #d2674a;
+  --accent-ink: #b14e34;
+  --accent-hover: #e0795c;
+  --accent-soft: #f8e9e1;
+  --accent-line: #efcdbe;
+  --on-accent: #fffcf8;
 
   /* Semantic */
-  --success:      #4A8A5C;
-  --success-soft: #E7F1E6;
-  --warn:         #C0810F;
-  --warn-soft:    #FAF0DA;
-  --danger:       #C24A38;
-  --danger-soft:  #FAE8E2;
+  --success: #4a8a5c;
+  --success-soft: #e7f1e6;
+  --warn: #c0810f;
+  --warn-soft: #faf0da;
+  --danger: #c24a38;
+  --danger-soft: #fae8e2;
 
   /* Radii */
-  --r-xs:   6px;
-  --r-sm:   10px;
-  --r-md:   14px;
-  --r-lg:   20px;
-  --r-xl:   28px;
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
   --r-pill: 999px;
 
   /* Spacing (4pt base) */
-  --s-1:  4px;
-  --s-2:  8px;
-  --s-3:  12px;
-  --s-4:  16px;
-  --s-5:  24px;
-  --s-6:  32px;
-  --s-7:  48px;
-  --s-8:  64px;
-  --s-9:  96px;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
   --s-10: 128px;
 
   /* Shadows — soft, warm-tinted */
-  --shadow-xs:   0 1px 2px rgba(42, 36, 32, 0.05);
-  --shadow-sm:   0 1px 3px rgba(42, 36, 32, 0.07), 0 1px 2px rgba(42, 36, 32, 0.04);
-  --shadow-md:   0 6px 16px rgba(42, 36, 32, 0.08), 0 2px 4px rgba(42, 36, 32, 0.04);
-  --shadow-lg:   0 16px 40px rgba(42, 36, 32, 0.12), 0 4px 10px rgba(42, 36, 32, 0.05);
-  --shadow-ring: 0 0 0 3px rgba(210, 103, 74, 0.20);
+  --shadow-xs: 0 1px 2px rgba(42, 36, 32, 0.05);
+  --shadow-sm:
+    0 1px 3px rgba(42, 36, 32, 0.07), 0 1px 2px rgba(42, 36, 32, 0.04);
+  --shadow-md:
+    0 6px 16px rgba(42, 36, 32, 0.08), 0 2px 4px rgba(42, 36, 32, 0.04);
+  --shadow-lg:
+    0 16px 40px rgba(42, 36, 32, 0.12), 0 4px 10px rgba(42, 36, 32, 0.05);
+  --shadow-ring: 0 0 0 3px rgba(210, 103, 74, 0.2);
 
   /* Motion */
-  --ease:        cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast:    120ms;
-  --dur:         200ms;
-  --dur-slow:    360ms;
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 360ms;
 }
 
 @layer base {
@@ -91,7 +94,7 @@
 
 /* ── Layout utilities (fluid spacing, grids) ── */
 .px-fluid {
-  padding-left:  clamp(20px, 6vw, 64px);
+  padding-left: clamp(20px, 6vw, 64px);
   padding-right: clamp(20px, 6vw, 64px);
 }
 .hero-section {
@@ -99,7 +102,7 @@
   grid-template-columns: 1.5fr 1fr;
   gap: clamp(32px, 6vw, 80px);
   align-items: center;
-  padding-top:    clamp(48px, 9vw, 110px);
+  padding-top: clamp(48px, 9vw, 110px);
   padding-bottom: clamp(40px, 7vw, 88px);
   max-width: 1100px;
   margin-left: auto;
@@ -109,21 +112,21 @@
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: clamp(32px, 6vw, 72px);
-  padding-top:    clamp(40px, 7vw, 80px);
+  padding-top: clamp(40px, 7vw, 80px);
   padding-bottom: clamp(40px, 7vw, 80px);
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
 .section-wrap {
-  padding-top:    clamp(40px, 7vw, 80px);
+  padding-top: clamp(40px, 7vw, 80px);
   padding-bottom: clamp(40px, 7vw, 80px);
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
 .footer-wrap {
-  padding-top:    clamp(56px, 9vw, 110px);
+  padding-top: clamp(56px, 9vw, 110px);
   padding-bottom: 56px;
   max-width: 1100px;
   margin-left: auto;
