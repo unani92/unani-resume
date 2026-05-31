@@ -1,10 +1,10 @@
 const groups = [
   { k: "Languages", v: ["JavaScript", "TypeScript"] },
-  { k: "Frameworks", v: ["React", "Next.js", "Vue", "Nuxt", "React Native"] },
+  { k: "Frameworks", v: ["React", "Next.js", "Vue", "React Native"] },
   { k: "Styling", v: ["Tailwind CSS", "SCSS", "Emotion"] },
-  { k: "Data / State", v: ["React-Query", "GraphQL", "Zustand", "Redux"] },
-  { k: "Backend", v: ["Node.js", "NestJS", "Prisma", "MySQL"] },
-  { k: "Infra", v: ["AWS", "Vercel", "Firebase", "Supabase",] },
+  { k: "Data / State", v: ["React-Query", "GraphQL", "Zustand"] },
+  { k: "Infra", v: ["AWS", "Vercel", "Firebase", "Supabase"] },
+  { k: "AI Tools", v: ["Claude Code", "MCP", "Claude Skills", "sub-agents", "Harness Engineering"] },
 ];
 
 export default function About() {
@@ -20,8 +20,10 @@ export default function About() {
             다수 경험하며, 기능 개발부터 배포·운영까지 전반을 담당해 왔습니다.
           </p>
           <p className="text-[15px] leading-[1.7] text-[var(--ink-3)] mt-[18px] mb-0">
-            좋은 UX는 좋은 코드에서 나온다고 믿습니다. 주말엔 FC서울 팬 커뮤니티
-            사이트를 직접 만들고 운영합니다.
+            단순한 코딩 능력보다{" "}
+            <b className="text-[var(--ink-2)]">AI 에이전트를 설계하고 운용하는 능력</b>이
+            중요해진 시대. MCP 연동·스킬 기반 컨텍스트 관리·멀티 에이전트 아키텍처를
+            실무에 접목하며 계속 진화하고 있습니다.
           </p>
         </div>
 
