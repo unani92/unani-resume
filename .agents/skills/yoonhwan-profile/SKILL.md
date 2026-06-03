@@ -50,11 +50,14 @@ description: 정윤환의 실제 이력 및 프로필 컨텍스트. 포트폴리
 
 ### 스토어링크 — FrontEnd Developer
 **기간**: 2024.1.8 ~ 현재
-**서비스**: 리뷰 체험단 플랫폼 퍼그샵(한국/일본) — 이커머스 마케팅 에이전시
+**서비스**: 리뷰 체험단 플랫폼 퍼그샵(한국/일본), Pointail(일본 현지 리브랜딩) — 이커머스 마케팅 에이전시
 **기술**: React (Next.js), TypeScript, react-query, Tailwind CSS, zustand, i18n
 **주요 업무**:
 - 퍼그샵 사용자/관리자 페이지 기능 개발 및 유지보수
 - 한국·일본 서비스 리뉴얼 프론트엔드 개발 (다국어 i18n 포함)
+- Pointail 광고주 페이지 신규 개발 (2025.6~, Next.js, 퍼그샵과 동일 스택)
+  - 일본 현지 리뷰 체험단 모집을 위한 광고주용 페이지
+  - 홍보용 랜딩, 캠페인 생성/복사/임시저장, 상세·수정, 리포트 등 광고주 운영 전 과정 구현
 
 ---
 
@@ -126,11 +129,18 @@ description: 정윤환의 실제 이력 및 프로필 컨텍스트. 포트폴리
 - 서브텍스트: React/Next.js 기반 스타트업 실서비스를 다수 경험한 프론트엔드 개발자입니다. 사용자 경험을 중심으로 한 UI 개발과 실서비스 운영에 집중합니다.
 - 통계: 5+ yrs / 4 companies / 10+ projects
 
-### Projects 섹션 (4개)
+### Projects 섹션 (3개)
 1. **수호신 커뮤니티** (SIDE, 2023~) — Next.js 14 풀스택, metric: "DAU 최다 2,300"
 2. **퍼그샵 KO/JP 리뉴얼** (PLATFORM, 2024~) — 한·일 다국어 이커머스 플랫폼, metric: "KO · JP 다국어"
-3. **하이파이브 마켓 MVP** (STARTUP, 2023) — 피트니스 커머스 웹뷰 MVP, metric: "MVP 단독 개발"
-4. **반쪽 앱 개발** (APP, 2021~2022) — React Native 소개팅 앱 신규 출시, metric: "실서비스 배포"
+3. **Pointail 광고주 페이지** (PLATFORM, 2025.6~) — 퍼그샵을 일본 현지 시장용으로 리브랜딩한 리뷰 체험단 플랫폼의 광고주 페이지 신규 개발, metric: "일본 현지 서비스"
+   - 기능별 영상 갤러리(A안: 좌측 기능 리스트 + 우측 영상) 형태로 노출
+   - 표시 기능: 홍보용 랜딩 페이지, 캠페인 생성, 캠페인 복사, 캠페인 임시저장, 캠페인 상세/수정, 캠페인 리포트
+   - 영상은 `public/videos/pointail/{slug}.mp4` + 포스터 `{slug}.jpg` 사용, video-editing-expert 에이전트로 압축
+   - 기술 스택은 퍼그샵과 동일 (Next.js / TypeScript / React-Query / Zustand / Tailwind / i18n)
+
+**포트폴리오 카드에서 제외된 과거 프로젝트** (이력 자체는 Work Experience에 보존):
+- 하이파이브 마켓 MVP (2023, 슬릭코퍼레이션 재직 중)
+- 반쪽 앱 React Native (2021~2022, 바닐라브릿지 재직 중)
 
 ### About 섹션 기술스택 그룹 (6개)
 - **Languages**: JavaScript, TypeScript

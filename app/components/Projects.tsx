@@ -1,8 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const projects = [
+type Feature = {
+  title: string
+  caption: string
+  src: string
+  poster?: string
+}
+
+type Project = {
+  tag: string
+  year: string
+  title: string
+  stack: string[]
+  desc: string
+  metric: string
+  features?: Feature[]
+}
+
+const projects: Project[] = [
   {
     tag: 'SIDE',
     year: '2023~',
@@ -34,27 +51,63 @@ const projects = [
     metric: 'KO · JP 다국어',
   },
   {
-    tag: 'STARTUP',
-    year: '2023',
-    title: '하이파이브 마켓 MVP',
+    tag: 'PLATFORM',
+    year: '2025.6~',
+    title: 'Pointail 광고주 페이지',
     stack: [
       'Next.js',
       'TypeScript',
-      'GraphQL',
-      'Emotion',
-      'Firebase',
-      'Vercel',
+      'React-Query',
+      'Zustand',
+      'Tailwind CSS',
+      'i18n',
     ],
-    desc: '피트니스 강사가 회원에게 상품을 판매하는 인앱 커머스 웹뷰 MVP 개발 완료. GraphQL API 연동 및 Emotion 기반 디자인 시스템으로 빠른 프로토타이핑 달성.',
-    metric: 'MVP 단독 개발',
-  },
-  {
-    tag: 'APP',
-    year: '2021~2022',
-    title: '반쪽 앱 — React Native',
-    stack: ['React Native', 'Vue', 'Nuxt.js', 'SCSS', 'Firebase', 'AWS S3'],
-    desc: "4050 전용 소개팅 앱 '반쪽' React Native + 웹뷰 신규 개발 및 실서비스 배포. 바닐라브릿지 앱 로깅 환경(Firebase BigQuery)·A/B 테스트(Hackle) 구축 병행.",
-    metric: '실서비스 배포',
+    desc: '퍼그샵을 일본 현지 시장에 맞춰 리브랜딩한 리뷰 체험단 플랫폼 Pointail의 광고주 페이지를 신규 개발. 광고주가 캠페인을 등록·관리하고 리뷰어 매칭과 성과 리포트를 확인하는 전 과정을 지원.',
+    metric: '일본 현지 서비스',
+    features: [
+      {
+        title: '홍보용 랜딩 페이지',
+        caption:
+          '광고주 유입을 위한 서비스 소개 랜딩. 일본어 카피와 CTA 구성, 스크롤 인터랙션 적용.',
+        src: '/videos/pointail/landing.mp4',
+        poster: '/videos/pointail/landing.jpg',
+      },
+      {
+        title: '광고주 캠페인 생성',
+        caption:
+          '단계별 폼으로 상품 정보·리뷰 조건·예산을 입력해 캠페인을 등록. 입력 단계별 검증과 자동 저장 적용.',
+        src: '/videos/pointail/campaign-create.mp4',
+        poster: '/videos/pointail/campaign-create.jpg',
+      },
+      {
+        title: '캠페인 복사',
+        caption:
+          '기존 캠페인 설정을 그대로 복제해 신규 캠페인으로 빠르게 등록. 반복 운영 광고주의 작업 시간 단축.',
+        src: '/videos/pointail/campaign-duplicate.mp4',
+        poster: '/videos/pointail/campaign-duplicate.jpg',
+      },
+      {
+        title: '캠페인 임시저장',
+        caption:
+          '작성 중 이탈해도 입력값을 보존. 임시저장 목록에서 이어서 작성하거나 폐기 가능.',
+        src: '/videos/pointail/campaign-draft.mp4',
+        poster: '/videos/pointail/campaign-draft.jpg',
+      },
+      {
+        title: '캠페인 상세 / 수정',
+        caption:
+          '캠페인 진행 현황·리뷰어 매칭 상태를 한 화면에서 확인. 진행 단계에 따라 수정 가능한 필드를 동적으로 제어.',
+        src: '/videos/pointail/campaign-detail.mp4',
+        poster: '/videos/pointail/campaign-detail.jpg',
+      },
+      {
+        title: '캠페인 리포트',
+        caption:
+          '캠페인 종료 후 리뷰 노출·전환 지표를 시각화. 광고주가 다음 캠페인을 설계할 수 있도록 핵심 KPI 강조.',
+        src: '/videos/pointail/campaign-report.mp4',
+        poster: '/videos/pointail/campaign-report.jpg',
+      },
+    ],
   },
 ]
 
@@ -116,6 +169,10 @@ export default function Projects() {
                       {p.metric}
                     </span>
                   </div>
+
+                  {p.features && isOpen ? (
+                    <FeatureShowcase features={p.features} />
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -123,5 +180,83 @@ export default function Projects() {
         })}
       </div>
     </section>
+  )
+}
+
+function FeatureShowcase({ features }: { features: Feature[] }) {
+  const [selected, setSelected] = useState(0)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const active = features[selected]
+
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.load()
+  }, [selected])
+
+  return (
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="mt-[24px] pt-[20px] border-t border-[var(--line)] grid grid-cols-[minmax(0,220px)_1fr] gap-[20px] max-md:grid-cols-1"
+    >
+      <ul className="flex flex-col gap-[4px] max-md:flex-row max-md:overflow-x-auto max-md:gap-[8px]">
+        {features.map((f, idx) => {
+          const isActive = idx === selected
+          return (
+            <li key={f.title} className="max-md:shrink-0">
+              <button
+                type="button"
+                onClick={() => setSelected(idx)}
+                className={`w-full text-left rounded-[var(--r-xs)] px-[12px] py-[10px] [transition:background_var(--dur)_var(--ease),color_var(--dur)_var(--ease)] cursor-pointer border ${
+                  isActive
+                    ? 'bg-[var(--accent-soft)] text-[var(--accent-ink)] border-[var(--accent-line)]'
+                    : 'bg-transparent text-[var(--ink-3)] border-transparent hover:bg-[var(--surface-2)] hover:text-[var(--ink-2)]'
+                }`}
+              >
+                <span className="block [font-family:var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.06em] text-[var(--ink-4)] mb-[2px]">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className="block text-[13px] font-semibold leading-[1.35] tracking-[-0.01em]">
+                  {f.title}
+                </span>
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+
+      <div className="flex flex-col gap-[12px] min-w-0">
+        <div className="relative w-full aspect-video rounded-[var(--r-sm)] overflow-hidden bg-[var(--paper-sunk)] border border-[var(--line)]">
+          <video
+            key={active.src}
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover bg-black"
+            src={active.src}
+            poster={active.poster}
+            controls
+            muted
+            playsInline
+            preload="none"
+          />
+          <PlaceholderOverlay poster={active.poster} />
+        </div>
+        <p className="m-0 text-[13px] leading-[1.65] text-[var(--ink-3)]">
+          <b className="text-[var(--ink-2)]">{active.title}</b>
+          {' — '}
+          {active.caption}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function PlaceholderOverlay({ poster }: { poster?: string }) {
+  if (poster) return null
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <span className="[font-family:var(--font-mono)] text-[11px] uppercase tracking-[0.08em] text-[var(--ink-4)]">
+        영상 준비 중
+      </span>
+    </div>
   )
 }

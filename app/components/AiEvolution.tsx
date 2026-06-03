@@ -45,10 +45,10 @@ const phases: Phase[] = [
   {
     no: '05',
     title: 'Harness Engineering',
-    desc: '프롬프트 엔지니어링에 하네스 엔지니어링을 접목. 린트·타입체크를 훅으로 연결해 빌드 안전성을 보장하고, 중요 비즈니스 로직엔 e2e 테스트로 자동 검증 플로우 구축.',
+    desc: 'LLM이 생성한 코드는 양이 많아 사람이 전수 리뷰하기 어렵다는 한계에서 출발. lint·typecheck를 PostToolUse 훅에 묶어 매 편집마다 1차 검수를 자동화하고, 핵심 비즈니스 플로우는 e2e 테스트로 회귀를 잡는 안전망 구축.',
     example:
-      'code-quality-guard.md 세팅을 통해 코딩 완료 후 자동으로 코드품질 관리 스크립트 러닝을 지시',
-    tags: ['ESLint', 'TypeScript', 'Playwright', 'CI Hook'],
+      'PostToolUse 훅으로 Edit/Write 직후 lint·typecheck 자동 실행. 실패 시 에이전트가 결과를 받아 스스로 수정 루프 진입.',
+    tags: ['ESLint', 'TypeScript', 'Playwright', 'PostToolUse Hook'],
     current: false,
   },
   {
