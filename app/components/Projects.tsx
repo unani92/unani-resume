@@ -73,11 +73,18 @@ const projects: Project[] = [
         poster: '/videos/pointail/landing.jpg',
       },
       {
-        title: '광고주 캠페인 생성',
+        title: '광고주 캠페인 생성 / 임시저장',
         caption:
           '단계별 폼으로 상품 정보·리뷰 조건·예산을 입력해 캠페인을 등록. 입력 단계별 검증과 자동 저장 적용.',
         src: '/videos/pointail/campaign-create.mp4',
         poster: '/videos/pointail/campaign-create.jpg',
+      },
+      {
+        title: '캠페인 조회 및 수정',
+        caption:
+          '작성 중 이탈해도 입력값을 보존. 임시저장 목록에서 이어서 작성하거나 폐기 가능.',
+        src: '/videos/pointail/campaign-draft.mp4',
+        poster: '/videos/pointail/campaign-draft.jpg',
       },
       {
         title: '캠페인 복사',
@@ -87,25 +94,18 @@ const projects: Project[] = [
         poster: '/videos/pointail/campaign-duplicate.jpg',
       },
       {
-        title: '캠페인 임시저장',
-        caption:
-          '작성 중 이탈해도 입력값을 보존. 임시저장 목록에서 이어서 작성하거나 폐기 가능.',
-        src: '/videos/pointail/campaign-draft.mp4',
-        poster: '/videos/pointail/campaign-draft.jpg',
-      },
-      {
-        title: '캠페인 상세 / 수정',
-        caption:
-          '캠페인 진행 현황·리뷰어 매칭 상태를 한 화면에서 확인. 진행 단계에 따라 수정 가능한 필드를 동적으로 제어.',
-        src: '/videos/pointail/campaign-detail.mp4',
-        poster: '/videos/pointail/campaign-detail.jpg',
-      },
-      {
         title: '캠페인 리포트',
         caption:
           '캠페인 종료 후 리뷰 노출·전환 지표를 시각화. 광고주가 다음 캠페인을 설계할 수 있도록 핵심 KPI 강조.',
         src: '/videos/pointail/campaign-report.mp4',
         poster: '/videos/pointail/campaign-report.jpg',
+      },
+      {
+        title: '일본어 지원',
+        caption:
+          '캠페인 진행 현황·리뷰어 매칭 상태를 한 화면에서 확인. 진행 단계에 따라 수정 가능한 필드를 동적으로 제어.',
+        src: '/videos/pointail/campaign-detail.mp4',
+        poster: '/videos/pointail/campaign-detail.jpg',
       },
     ],
   },
