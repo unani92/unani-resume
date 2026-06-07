@@ -1,74 +1,35 @@
 const skills = [
-  { k: 'Languages', v: 'Kotlin · Go · TypeScript' },
-  { k: 'Backend', v: 'Spring · gRPC · Kafka' },
-  { k: 'Data / Infra', v: 'PostgreSQL · Redis · AWS · K8s' },
+  { k: 'Languages', v: 'TypeScript · JavaScript' },
+  { k: 'Frontend', v: 'React · Next.js · React Native · Vue/Nuxt' },
+  { k: 'Styling / State', v: 'Tailwind · Emotion · React-Query · Zustand' },
 ]
 
 const meta = [
   { v: 'unani9292@gmail.com' },
-  { v: 'github.com/yunhwan' },
-  { v: 'yunhwan.dev' },
+  { v: 'github.com/unani92' },
+  { v: '+82 10-4906-3273' },
 ]
 
 export default function CareerHeader() {
   return (
     <header>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          gap: 24,
-          flexWrap: 'wrap',
-        }}
-      >
+      <div className="flex items-start justify-between gap-6 flex-wrap">
         <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: '.14em',
-              textTransform: 'uppercase',
-              color: 'var(--accent)',
-            }}
-          >
+          <div className="font-mono text-[12px] font-semibold tracking-[0.14em] uppercase text-[var(--accent)]">
             경력기술서 · Career Description
           </div>
-          <h1
-            style={{
-              margin: '8px 0 0',
-              font: '800 34px/1 var(--font-sans)',
-              letterSpacing: '-0.025em',
-              color: 'var(--ink)',
-            }}
-          >
+          <h1 className="mt-2 mb-0 font-sans font-extrabold text-[34px] leading-none tracking-[-0.025em] text-[var(--ink)]">
             정윤환{' '}
-            <span
-              style={{
-                fontWeight: 500,
-                fontSize: 17,
-                color: 'var(--ink-4)',
-                fontFamily: 'var(--font-mono)',
-              }}
-            >
-              Backend Engineer · 4 yrs
+            <span className="font-medium text-[17px] text-[var(--ink-4)] font-mono">
+              FrontEnd Developer · 5+ yrs
             </span>
           </h1>
         </div>
-        <div style={{ display: 'grid', gap: 5, textAlign: 'right' }}>
+        <div className="grid gap-[5px] text-right">
           {meta.map((m) => (
             <span
               key={m.v}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-                gap: 7,
-                fontFamily: 'var(--font-mono)',
-                fontSize: 12,
-                color: 'var(--ink-3)',
-              }}
+              className="inline-flex items-center justify-end gap-[7px] font-mono text-[12px] text-[var(--ink-3)]"
             >
               {m.v}
             </span>
@@ -76,53 +37,21 @@ export default function CareerHeader() {
         </div>
       </div>
 
-      <p
-        style={{
-          margin: '18px 0 20px',
-          font: '400 15.5px/1.7 var(--font-sans)',
-          color: 'var(--ink-2)',
-          maxWidth: 680,
-        }}
-      >
-        결제·정산 도메인에서 대용량 트래픽을 다루는 분산 시스템을 설계하고
-        운영해 왔습니다. 단순한 설계와 관측 가능성을 통해 장애를 빠르게
-        복구하고, 팀이 안정적으로 제품을 출시할 수 있도록 만드는 일에
-        집중합니다.
+      <p className="mt-[18px] mb-5 font-sans font-normal text-[15.5px] leading-[1.7] text-[var(--ink-2)] max-w-[680px]">
+        React·Next.js 기반 스타트업 실서비스를 다수 운영해 온 5년차 프론트엔드
+        개발자입니다. 사용자와 가장 가까운 곳에서 비즈니스 임팩트로 이어지는 UX
+        개선을 만드는 일에 집중합니다. 최근에는 일본 체험단 마케팅 플랫폼
+        Pointail의 광고주 페이지를 도메인 단일 책임자로서 처음부터 끝까지
+        설계·운영하고 있습니다.
       </p>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 16,
-          padding: '16px 0',
-          borderTop: '1px solid var(--line)',
-          borderBottom: '2px solid var(--line-ink)',
-        }}
-      >
+      <div className="grid grid-cols-3 gap-4 py-4 border-t border-[var(--line)] border-b-2 border-b-[var(--line-ink)]">
         {skills.map((s) => (
           <div key={s.k}>
-            <div
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 10.5,
-                fontWeight: 600,
-                letterSpacing: '.1em',
-                textTransform: 'uppercase',
-                color: 'var(--accent)',
-                marginBottom: 5,
-              }}
-            >
+            <div className="font-mono text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[var(--accent)] mb-[5px]">
               {s.k}
             </div>
-            <div
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 12.5,
-                color: 'var(--ink-2)',
-                lineHeight: 1.5,
-              }}
-            >
+            <div className="font-mono text-[12.5px] text-[var(--ink-2)] leading-[1.5]">
               {s.v}
             </div>
           </div>

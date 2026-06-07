@@ -3,6 +3,13 @@ interface Result {
   label: string
 }
 
+interface Phase {
+  label: string
+  problem?: string[]
+  approach: string[]
+  results: Result[]
+}
+
 interface ProjectData {
   title: string
   period: string
@@ -11,9 +18,44 @@ interface ProjectData {
   team?: string
   summary: string
   stack: string[]
-  problem: string[]
-  approach: string[]
+  problem?: string[]
+  approach?: string[]
+  phases?: Phase[]
   results: Result[]
+}
+
+function SectionLabel({
+  children,
+  accent,
+}: {
+  children: React.ReactNode
+  accent?: boolean
+}) {
+  return (
+    <div
+      className={`font-mono text-[11px] font-semibold uppercase tracking-[0.12em] mb-2 ${
+        accent ? 'text-[var(--accent)]' : 'text-[var(--ink-3)]'
+      }`}
+    >
+      {children}
+    </div>
+  )
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="m-0 p-0 list-none grid gap-2">
+      {items.map((t, i) => (
+        <li
+          key={i}
+          className="flex gap-2.5 text-[14.5px] leading-[1.65] text-[var(--ink-2)] font-normal"
+        >
+          <span className="text-[var(--accent)] mt-px flex-shrink-0">—</span>
+          <span dangerouslySetInnerHTML={{ __html: t }} />
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 function Block({
@@ -26,48 +68,63 @@ function Block({
   accent?: boolean
 }) {
   return (
-    <div style={{ marginTop: 16 }}>
-      <div
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: 11,
-          fontWeight: 600,
-          letterSpacing: '.12em',
-          textTransform: 'uppercase',
-          color: accent ? 'var(--accent)' : 'var(--ink-3)',
-          marginBottom: 8,
-        }}
-      >
-        {label}
+    <div className="mt-4">
+      <SectionLabel accent={accent}>{label}</SectionLabel>
+      <BulletList items={items} />
+    </div>
+  )
+}
+
+function ResultGrid({ results }: { results: Result[] }) {
+  return (
+    <div className="flex flex-wrap gap-x-7 gap-y-2.5">
+      {results.map((r, i) => (
+        <div key={i} className="min-w-[120px]">
+          <div className="font-sans font-extrabold text-[22px] leading-none tracking-[-0.02em] text-[var(--accent-ink)]">
+            {r.metric}
+          </div>
+          <div className="text-[12.5px] text-[var(--ink-2)] mt-1">
+            {r.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ResultsCard({
+  results,
+  title = '성과 · Result',
+}: {
+  results: Result[]
+  title?: string
+}) {
+  return (
+    <div className="mt-[18px] px-[18px] py-4 bg-[var(--accent-soft)] rounded-[var(--r-sm)] border border-[var(--accent-line)]">
+      <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent-ink)] mb-2">
+        {title}
       </div>
-      <ul
-        style={{
-          margin: 0,
-          padding: 0,
-          listStyle: 'none',
-          display: 'grid',
-          gap: 8,
-        }}
-      >
-        {items.map((t, i) => (
-          <li
-            key={i}
-            style={{
-              display: 'flex',
-              gap: 10,
-              font: '400 14.5px/1.65 var(--font-sans)',
-              color: 'var(--ink-2)',
-            }}
-          >
-            <span
-              style={{ color: 'var(--accent)', marginTop: 1, flexShrink: 0 }}
-            >
-              —
-            </span>
-            <span dangerouslySetInnerHTML={{ __html: t }} />
-          </li>
-        ))}
-      </ul>
+      <ResultGrid results={results} />
+    </div>
+  )
+}
+
+function PhaseBlock({ phase, index }: { phase: Phase; index: number }) {
+  return (
+    <div className="mt-7 pt-5 border-t border-dashed border-[var(--line)]">
+      <div className="flex items-baseline gap-2.5 flex-wrap">
+        <span className="font-mono text-[12px] font-semibold text-[var(--accent)] tracking-[0.04em]">
+          PHASE {String(index).padStart(2, '0')}
+        </span>
+        <h3 className="m-0 font-sans font-bold text-[16.5px] leading-[1.35] text-[var(--ink)] tracking-[-0.01em]">
+          {phase.label}
+        </h3>
+      </div>
+      {phase.problem && phase.problem.length > 0 && (
+        <Block label="문제 · Problem" items={phase.problem} />
+      )}
+      <Block label="해결 · Approach" items={phase.approach} accent />
+      <ResultsCard results={phase.results} />
     </div>
   )
 }
@@ -80,166 +137,67 @@ export default function Project({
   index: number
 }) {
   return (
-    <article
-      style={{
-        padding: '30px 0',
-        borderTop: '1px solid var(--line)',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'baseline',
-          gap: 16,
-          flexWrap: 'wrap',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            gap: 14,
-            flexWrap: 'wrap',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 13,
-              fontWeight: 600,
-              color: 'var(--accent)',
-            }}
-          >
+    <article className="py-[30px] border-t border-[var(--line)]">
+      <div className="flex justify-between items-baseline gap-4 flex-wrap">
+        <div className="flex items-baseline gap-3.5 flex-wrap">
+          <span className="font-mono text-[13px] font-semibold text-[var(--accent)]">
             {String(index).padStart(2, '0')}
           </span>
-          <h2
-            style={{
-              margin: 0,
-              font: '700 23px/1.25 var(--font-sans)',
-              letterSpacing: '-0.015em',
-              color: 'var(--ink)',
-            }}
-          >
+          <h2 className="m-0 font-sans font-bold text-[23px] leading-[1.25] tracking-[-0.015em] text-[var(--ink)]">
             {p.title}
           </h2>
         </div>
-        <span
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 12.5,
-            color: 'var(--ink-4)',
-          }}
-        >
+        <span className="font-mono text-[12.5px] text-[var(--ink-4)]">
           {p.period}
         </span>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          gap: 14,
-          flexWrap: 'wrap',
-          marginTop: 8,
-          fontFamily: 'var(--font-mono)',
-          fontSize: 12.5,
-          color: 'var(--ink-3)',
-        }}
-      >
+      <div className="flex gap-3.5 flex-wrap mt-2 font-mono text-[12.5px] text-[var(--ink-3)]">
         <span>{p.org}</span>
-        <span style={{ color: 'var(--ink-4)' }}>·</span>
+        <span className="text-[var(--ink-4)]">·</span>
         <span>{p.role}</span>
-        {p.team && (
+        {p.team ? (
           <>
-            <span style={{ color: 'var(--ink-4)' }}>·</span>
+            <span className="text-[var(--ink-4)]">·</span>
             <span>{p.team}</span>
           </>
-        )}
+        ) : null}
       </div>
 
-      <p
-        style={{
-          margin: '14px 0 4px',
-          font: '500 16px/1.6 var(--font-sans)',
-          color: 'var(--ink)',
-        }}
-      >
+      <p className="mt-3.5 mb-1 font-sans font-medium text-[16px] leading-[1.6] text-[var(--ink)]">
         {p.summary}
       </p>
 
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 6,
-          margin: '14px 0 4px',
-        }}
-      >
+      <div className="flex flex-wrap gap-1.5 my-3.5">
         {p.stack.map((s) => (
           <span
             key={s}
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 12,
-              fontWeight: 500,
-              padding: '4px 10px',
-              borderRadius: 'var(--r-xs)',
-              background: 'var(--surface-2)',
-              color: 'var(--ink-2)',
-              border: '1px solid var(--line)',
-            }}
+            className="font-mono text-[12px] font-medium px-2.5 py-1 rounded-[var(--r-xs)] bg-[var(--surface-2)] text-[var(--ink-2)] border border-[var(--line)]"
           >
             {s}
           </span>
         ))}
       </div>
 
-      <Block label="문제 · Problem" items={p.problem} />
-      <Block label="해결 · Approach" items={p.approach} accent />
+      {p.problem && p.problem.length > 0 ? (
+        <Block label="문제 · Problem" items={p.problem} />
+      ) : null}
+      {p.approach && p.approach.length > 0 ? (
+        <Block label="해결 · Approach" items={p.approach} accent />
+      ) : null}
 
-      <div
-        style={{
-          marginTop: 18,
-          padding: '16px 18px',
-          background: 'var(--accent-soft)',
-          borderRadius: 'var(--r-sm)',
-          border: '1px solid var(--accent-line)',
-        }}
-      >
-        <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: '.12em',
-            textTransform: 'uppercase',
-            color: 'var(--accent-ink)',
-            marginBottom: 8,
-          }}
-        >
-          성과 · Result
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 28px' }}>
-          {p.results.map((r, i) => (
-            <div key={i} style={{ minWidth: 120 }}>
-              <div
-                style={{
-                  font: '800 22px/1 var(--font-sans)',
-                  color: 'var(--accent-ink)',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                {r.metric}
-              </div>
-              <div
-                style={{ fontSize: 12.5, color: 'var(--ink-2)', marginTop: 4 }}
-              >
-                {r.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {p.phases?.map((phase, i) => (
+        <PhaseBlock key={i} phase={phase} index={i + 1} />
+      ))}
+
+      <ResultsCard
+        results={p.results}
+        title={
+          p.phases && p.phases.length > 0
+            ? '종합 성과 · Highlights'
+            : '성과 · Result'
+        }
+      />
     </article>
   )
 }
