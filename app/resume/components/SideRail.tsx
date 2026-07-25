@@ -3,7 +3,10 @@ const skills = [
   { k: 'Frameworks', v: 'React · Next.js · Vue · Nuxt · React Native' },
   { k: 'Styling', v: 'Tailwind CSS · SCSS · Emotion' },
   { k: 'Data / State', v: 'React-Query · GraphQL · Zustand · Redux' },
-  { k: 'Backend', v: 'Node.js · NestJS · Prisma · MySQL' },
+  {
+    k: 'Backend',
+    v: 'Node.js · NestJS · Prisma · MySQL · Kotlin · Spring WebFlux · R2DBC',
+  },
   { k: 'Infra', v: 'AWS · Vercel · Firebase · Supabase' },
 ]
 
