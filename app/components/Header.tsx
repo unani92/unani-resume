@@ -28,6 +28,7 @@ export default function Header({ active, onNav }: HeaderProps) {
       <nav className="flex gap-1 items-center">
         {NAV_LINKS.map((l) => (
           <button
+            type={'button'}
             key={l.id}
             onClick={() => onNav(l.id)}
             className={`cursor-pointer text-[14px] font-semibold leading-none px-[14px] py-2 rounded-[var(--r-sm)] border-none [transition:all_var(--dur)_var(--ease)] ${

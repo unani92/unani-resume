@@ -1,5 +1,5 @@
 interface Result {
-  metric: string
+  metric?: string
   label: string
 }
 
@@ -7,7 +7,7 @@ interface Phase {
   label: string
   problem?: string[]
   approach: string[]
-  results: Result[]
+  results?: Result[]
 }
 
 interface ProjectData {
@@ -21,7 +21,7 @@ interface ProjectData {
   problem?: string[]
   approach?: string[]
   phases?: Phase[]
-  results: Result[]
+  results?: Result[]
 }
 
 function SectionLabel({
@@ -51,6 +51,7 @@ function BulletList({ items }: { items: string[] }) {
           className="flex gap-2.5 text-[14.5px] leading-[1.65] text-[var(--ink-2)] font-normal"
         >
           <span className="text-[var(--accent)] mt-px flex-shrink-0">—</span>
+          {/** biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
           <span dangerouslySetInnerHTML={{ __html: t }} />
         </li>
       ))}
@@ -78,16 +79,24 @@ function Block({
 function ResultGrid({ results }: { results: Result[] }) {
   return (
     <div className="flex flex-wrap gap-x-7 gap-y-2.5">
-      {results.map((r, i) => (
-        <div key={i} className="min-w-[120px]">
-          <div className="font-sans font-extrabold text-[22px] leading-none tracking-[-0.02em] text-[var(--accent-ink)]">
-            {r.metric}
+      {results.map((r, i) =>
+        r.metric ? (
+          <div key={i} className="min-w-[120px]">
+            <div className="font-sans font-extrabold text-[22px] leading-none tracking-[-0.02em] text-[var(--accent-ink)]">
+              {r.metric}
+            </div>
+            <div className="text-[12.5px] text-[var(--ink-2)] mt-1">
+              {r.label}
+            </div>
           </div>
-          <div className="text-[12.5px] text-[var(--ink-2)] mt-1">
-            {r.label}
+        ) : (
+          <div key={i} className="min-w-[120px] flex items-center">
+            <div className="font-sans font-semibold text-[14px] leading-[1.4] text-[var(--ink-2)]">
+              {r.label}
+            </div>
           </div>
-        </div>
-      ))}
+        ),
+      )}
     </div>
   )
 }
@@ -96,9 +105,10 @@ function ResultsCard({
   results,
   title = '성과 · Result',
 }: {
-  results: Result[]
+  results?: Result[]
   title?: string
 }) {
+  if (!results || results.length === 0) return null
   return (
     <div className="mt-[18px] px-[18px] py-4 bg-[var(--accent-soft)] rounded-[var(--r-sm)] border border-[var(--accent-line)]">
       <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent-ink)] mb-2">
@@ -164,9 +174,11 @@ export default function Project({
         ) : null}
       </div>
 
-      <p className="mt-3.5 mb-1 font-sans font-medium text-[16px] leading-[1.6] text-[var(--ink)]">
-        {p.summary}
-      </p>
+      <p
+        className="mt-3.5 mb-1 font-sans font-medium text-[16px] leading-[1.6] text-[var(--ink)]"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        dangerouslySetInnerHTML={{ __html: p.summary }}
+      />
 
       <div className="flex flex-wrap gap-1.5 my-3.5">
         {p.stack.map((s) => (

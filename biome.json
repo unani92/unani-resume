@@ -31,11 +31,13 @@
         "noUselessTypeConstraint": "off"
       },
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn"
       },
       "a11y": {
         "useKeyWithClickEvents": "off",
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "noStaticElementInteractions": "off"
       }
     }
   },
