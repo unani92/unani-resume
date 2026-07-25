@@ -112,7 +112,7 @@ const projects: Project[] = [
 ]
 
 export default function Projects() {
-  const [open, setOpen] = useState<number>(0)
+  const [open, setOpen] = useState<number>(2)
 
   return (
     <section id="work" className="section-wrap px-fluid">

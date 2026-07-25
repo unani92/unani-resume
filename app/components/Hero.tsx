@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="hero-section px-fluid">
       <div>
-        <div className="overline">FrontEnd Developer · Seoul</div>
+        <div className="overline">AI Native FrontEnd Developer · Seoul</div>
         <div className="h-0.5 w-11 bg-[var(--line-ink)] mt-[14px] mb-[22px]" />
         <h2 className="m-0 text-[clamp(38px,4vw,44px)] font-extrabold leading-15 tracking-[-0.03em] text-[var(--ink)]">
           사용자와 가장 가까운 곳에서,

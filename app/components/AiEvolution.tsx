@@ -45,19 +45,25 @@ const phases: Phase[] = [
   {
     no: '05',
     title: 'Harness Engineering',
-    desc: 'LLM이 생성한 코드는 양이 많아 사람이 전수 리뷰하기 어렵다는 한계에서 출발. lint·typecheck를 PostToolUse 훅에 묶어 매 편집마다 1차 검수를 자동화하고, 핵심 비즈니스 플로우는 e2e 테스트로 회귀를 잡는 안전망 구축.',
+    desc: 'LLM이 생성한 코드는 양이 많아 사람이 전수 리뷰하기 어렵다는 한계에서 출발. FE는 PostToolUse 훅과 전용 스킬로 포맷·i18n을 자동 재검증하고, BE는 규칙 문서를 룰 단위로 강제해 존재하지 않는 코드를 지어내거나 운영 데이터를 건드리는 실수를 원천 차단하는 안전망을 구축.',
     example:
-      'PostToolUse 훅으로 Edit/Write 직후 lint·typecheck 자동 실행. 실패 시 에이전트가 결과를 받아 스스로 수정 루프 진입.',
-    tags: ['ESLint', 'TypeScript', 'Playwright', 'PostToolUse Hook'],
+      '(FE) PostToolUse 훅으로 Write/Edit 직후 Biome 자동 포맷. 컴포넌트 구현이 끝나면 check-translations 스킬이 자동 트리거돼 번역 누락(하드코딩 문구)을 스캔·자동 wrap, 중요 로직은 e2e로 기존 기능 동작 여부까지 검증.\n(BE) safety.md 룰로 존재하지 않는 클래스·테이블 생성과 운영 설정 파일 직접 수정을 원천 차단하고, testing.md 룰로 코루틴 테스트는 반드시 coEvery/coVerify를 쓰도록 강제해 잘못된 스텁이 그대로 통과되는 걸 막습니다.',
+    tags: [
+      'Biome',
+      'TypeScript',
+      'Playwright',
+      'PostToolUse Hook',
+      'Rule-driven Guardrail',
+    ],
     current: false,
   },
   {
     no: '06',
     title: '멀티 에이전트 아키텍처',
-    desc: 'TDD 에이전트가 테스트코드를 작성하고 FE 구현 에이전트가 이를 받아 개발을 진행하는 서브 에이전트 협업 구조 운용. AI 에이전트의 발전 속도에 발맞춰 워크플로우도 계속 진화 중.',
+    desc: '백엔드 모노레포에는 Architect·Domain Expert·Backend Developer·Reviewer·QA로 역할을 나눈 서브에이전트 파이프라인을, 프론트엔드에는 API 연동·번역 검증·E2E 작성처럼 공정별로 특화된 스킬을 배치해 하나의 요청이 여러 전문 에이전트/스킬을 순서대로 거치도록 설계. AI 에이전트의 발전 속도에 발맞춰 워크플로우도 계속 진화 중.',
     example:
-      'TDD 에이전트로 신규 컴포넌트 테스트 코드 먼저 작성하고, FE 구현 에이전트가 테스트를 통과하는 컴포넌트 개발해줘. 완료 후 code-quality-guard 에이전트로 검증해줘.',
-    tags: ['Sub-agent', 'TDD', 'Multi-agent', 'Claude Code'],
+      '(FE) 신규 API 연동은 api-hook-workflow 스킬이 스펙 동기화 → 엔드포인트 정의 → TanStack Query 훅 구현 → typecheck/lint 순서를 강제.\n(BE) Architect가 설계하면 Backend Developer가 구현하고, Reviewer가 APPROVE/REQUEST_CHANGES로 독립 검증한 뒤 QA가 회귀 범위를 확정.',
+    tags: ['Sub-agent', 'Skill Orchestration', 'TDD', 'Multi-agent'],
     current: true,
   },
 ]
@@ -83,8 +89,7 @@ export default function AiEvolution() {
             </div>
             <p className="m-0 text-[14px] leading-[1.7] text-[var(--ink-3)] pl-[18px]">
               AI 워크플로우를 실무에 내재화해 기획·설계·구현·검증 사이클을
-              빠르게 반복합니다. 린트·타입체크·e2e 훅으로 빌드 안전성을 자동
-              보장하기 때문에
+              빠르게 수행합니다. 이를 통해
               <b className="text-[var(--ink-2)]">
                 {' '}
                 개발 속도와 코드 품질을 함께 끌어올릴 수 있습니다.
@@ -145,7 +150,7 @@ export default function AiEvolution() {
                   <span className="block text-[10px] font-semibold [font-family:var(--font-mono)] text-[var(--ink-4)] mb-[6px] uppercase tracking-[0.06em]">
                     사용 예시
                   </span>
-                  <p className="m-0 text-[12px] leading-[1.6] [font-family:var(--font-mono)] text-[var(--ink-2)]">
+                  <p className="m-0 whitespace-pre-line text-[12px] leading-[1.6] [font-family:var(--font-mono)] text-[var(--ink-2)]">
                     {p.example}
                   </p>
                 </div>

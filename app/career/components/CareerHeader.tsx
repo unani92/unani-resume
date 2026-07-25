@@ -21,7 +21,7 @@ export default function CareerHeader() {
           <h1 className="mt-2 mb-0 font-sans font-extrabold text-[34px] leading-none tracking-[-0.025em] text-[var(--ink)]">
             정윤환{' '}
             <span className="font-medium text-[17px] text-[var(--ink-4)] font-mono">
-              FrontEnd Developer · 5+ yrs
+              AI Native FrontEnd Developer · 5+ yrs
             </span>
           </h1>
         </div>

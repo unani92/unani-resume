@@ -41,7 +41,7 @@ export default function ResumeHeader() {
             color: 'var(--accent)',
           }}
         >
-          FrontEnd Developer
+          AI Native FrontEnd Developer
         </div>
         <h1
           style={{
