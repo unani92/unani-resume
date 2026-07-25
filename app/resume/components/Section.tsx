@@ -8,7 +8,7 @@ interface SectionProps {
 
 export default function Section({ label, sub, children }: SectionProps) {
   return (
-    <section style={{ marginTop: 34 }}>
+    <section>
       <div
         style={{
           display: 'flex',

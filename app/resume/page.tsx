@@ -12,18 +12,25 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div style={{ background: 'var(--paper-sunk)', minHeight: '100vh' }}>
+    <div
+      style={{
+        background: 'var(--paper-sunk)',
+        minHeight: '100vh',
+        paddingBottom: '28px',
+      }}
+    >
       <ResumeToolbar />
       <div
         style={{
           background: 'var(--surface)',
           maxWidth: 880,
-          margin: '28px auto 56px',
+          margin: '28px auto 0 auto',
           padding: '48px clamp(28px, 5vw, 56px) 52px',
           border: '1px solid var(--line)',
           borderRadius: 'var(--r-md)',
           boxShadow: 'var(--shadow-md)',
         }}
+        // className=""
       >
         <ResumeHeader />
         <div
@@ -31,7 +38,7 @@ export default function ResumePage() {
             display: 'grid',
             gridTemplateColumns: '1fr 256px',
             gap: 'clamp(28px, 5vw, 52px)',
-            marginTop: 8,
+            paddingTop: 28,
           }}
         >
           <div>
