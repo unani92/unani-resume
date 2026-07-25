@@ -6,11 +6,11 @@ export default function Hero() {
       <div>
         <div className="overline">FrontEnd Developer · Seoul</div>
         <div className="h-0.5 w-11 bg-[var(--line-ink)] mt-[14px] mb-[22px]" />
-        <h1 className="m-0 text-[clamp(38px,5.5vw,68px)] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--ink)]">
+        <h2 className="m-0 text-[clamp(38px,4vw,44px)] font-extrabold leading-15 tracking-[-0.03em] text-[var(--ink)]">
           사용자와 가장 가까운 곳에서,
           <br />
           <span className="text-[var(--accent)]">좋은 경험</span>을 만듭니다.
-        </h1>
+        </h2>
         <p className="mt-6 mb-0 max-w-[460px] text-[18px] leading-[1.7] text-[var(--ink-2)]">
           React/Next.js 기반 스타트업 실서비스를 다수 경험한 프론트엔드
           개발자입니다. 사용자 경험을 중심으로 한 UI 개발과 실서비스 운영에
@@ -48,7 +48,7 @@ export default function Hero() {
       <div className="relative">
         <div className="absolute top-[14px] right-[-14px] bottom-[-14px] left-[14px] rounded-[var(--r-xl)] bg-[var(--accent-soft)]" />
         <Image
-          src="/images/portrait-bright.jpeg"
+          src="/images/mimoji.jpg"
           alt="정윤환"
           width={320}
           height={363}

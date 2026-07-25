@@ -142,12 +142,17 @@ function PhaseBlock({ phase, index }: { phase: Phase; index: number }) {
 export default function Project({
   p,
   index,
+  id,
 }: {
   p: ProjectData
   index: number
+  id?: string
 }) {
   return (
-    <article className="py-[30px] border-t border-[var(--line)]">
+    <article
+      id={id}
+      className="py-[30px] border-t border-[var(--line)] scroll-mt-[88px]"
+    >
       <div className="flex justify-between items-baseline gap-4 flex-wrap">
         <div className="flex items-baseline gap-3.5 flex-wrap">
           <span className="font-mono text-[13px] font-semibold text-[var(--accent)]">

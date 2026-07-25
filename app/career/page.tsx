@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ResumeToolbar from '../resume/components/ResumeToolbar'
 import CareerHeader from './components/CareerHeader'
+import CareerToc, { type TocCompanyGroup } from './components/CareerToc'
 import Project, { type ProjectData } from './components/Project'
 
 export const metadata: Metadata = {
@@ -148,12 +149,12 @@ const PROJECTS: ProjectData[] = [
       {
         label: 'Q4-Plus · BE/디자이너 리소스 0 — 캠페인 편의 기능 단독 구현',
         problem: [
-          'RevUp 출시로 <b>BE 개발자 신규 공수 0</b>, 디자이너 리소스도 제한',
+          '신규 사내 서비스 출시로 <b>BE 개발자 가용 공수 0</b>, 디자이너 리소스도 제한',
           '광고주가 지속 호소해 온 캠페인 생성 페인포인트 해결 필요',
         ],
         approach: [
           '임시저장 DB를 <b>Firebase Firestore로 우회 구현</b> → BE 의존성 제거',
-          'AI 에이전트로 레이아웃 생성 → 디자이너 공정 대체',
+          'AI 에이전트로 레이아웃 생성 → 디자이너 공수 대체',
           '기존 캠페인 상세 조회 API를 복사 기능에 재활용 → 신규 API 0건',
         ],
         results: [
@@ -410,14 +411,55 @@ const PROJECTS: ProjectData[] = [
   },
 ]
 
+const PROJECTS_WITH_ID = PROJECTS.map((p, i) => ({ ...p, id: `proj-${i}` }))
+
+function canonicalCompany(org: string) {
+  return org.split(' / ')[0].trim()
+}
+
+function yearLabel(period: string) {
+  const [start, end] = period.split('—').map((s) => s.trim().slice(0, 4))
+  return start === end ? start : `${start}–${end}`
+}
+
+function buildToc(
+  projects: (ProjectData & { id: string })[],
+): TocCompanyGroup[] {
+  const companyMap = new Map<
+    string,
+    Map<string, { id: string; title: string }[]>
+  >()
+
+  for (const p of projects) {
+    const company = canonicalCompany(p.org)
+    const year = yearLabel(p.period)
+    const yearMap = companyMap.get(company) ?? new Map()
+    companyMap.set(company, yearMap)
+    const items = yearMap.get(year) ?? []
+    yearMap.set(year, items)
+    items.push({ id: p.id, title: p.title })
+  }
+
+  return Array.from(companyMap.entries()).map(([company, yearMap]) => ({
+    company,
+    years: Array.from(yearMap.entries()).map(([year, items]) => ({
+      year,
+      items,
+    })),
+  }))
+}
+
+const TOC = buildToc(PROJECTS_WITH_ID)
+
 export default function CareerPage() {
   return (
     <div className="bg-[var(--paper-sunk)] min-h-screen">
       <ResumeToolbar />
+      <CareerToc toc={TOC} />
       <div className="bg-[var(--surface)] max-w-[900px] mx-auto mt-7 mb-14 px-[clamp(28px,5vw,60px)] pt-12 pb-[52px] border border-[var(--line)] rounded-[var(--r-md)] shadow-[var(--shadow-md)]">
         <CareerHeader />
-        {PROJECTS.map((p, i) => (
-          <Project key={i} p={p} index={i + 1} />
+        {PROJECTS_WITH_ID.map((p, i) => (
+          <Project key={p.id} p={p} index={i + 1} id={p.id} />
         ))}
       </div>
     </div>
