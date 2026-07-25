@@ -90,7 +90,7 @@ function ResultGrid({ results }: { results: Result[] }) {
             </div>
           </div>
         ) : (
-          <div key={i} className="min-w-[120px] flex items-center">
+          <div key={i} className="w-full flex items-center">
             <div className="font-sans font-semibold text-[14px] leading-[1.4] text-[var(--ink-2)]">
               {r.label}
             </div>
