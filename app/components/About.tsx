@@ -39,8 +39,8 @@ export default function About() {
             <b className="text-[var(--ink-2)]">
               AI 에이전트를 설계하고 운용하는 능력
             </b>
-            이 중요해진 시대. MCP 연동·스킬 기반 컨텍스트 관리·멀티 에이전트
-            아키텍처를 실무에 접목하며 계속 진화하고 있습니다.
+            이 중요해진 시대. MCP 연동·스킬 기반 컨텍스트 관리·에이전트
+            워크플로우(Agentic Workflow)를 실무에 접목하며 계속 성장하려 합니다.
           </p>
         </div>
 
