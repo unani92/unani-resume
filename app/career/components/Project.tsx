@@ -17,7 +17,7 @@ interface ProjectData {
   role: string
   team?: string
   summary: string
-  stack: string[]
+  stack?: string[]
   problem?: string[]
   approach?: string[]
   phases?: Phase[]
@@ -184,17 +184,6 @@ export default function Project({
         // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
         dangerouslySetInnerHTML={{ __html: p.summary }}
       />
-
-      <div className="flex flex-wrap gap-1.5 my-3.5">
-        {p.stack.map((s) => (
-          <span
-            key={s}
-            className="font-mono text-[12px] font-medium px-2.5 py-1 rounded-[var(--r-xs)] bg-[var(--surface-2)] text-[var(--ink-2)] border border-[var(--line)]"
-          >
-            {s}
-          </span>
-        ))}
-      </div>
 
       {p.problem && p.problem.length > 0 ? (
         <Block label="문제 · Problem" items={p.problem} />

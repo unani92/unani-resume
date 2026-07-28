@@ -339,7 +339,6 @@ const PROJECTS: ProjectData[] = [
       'React Native',
       'SCSS',
       'REST API',
-      'Ruby on Rails 연동',
       'PG 결제 SDK',
       '소셜로그인 SDK',
     ],
