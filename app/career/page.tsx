@@ -40,8 +40,6 @@ const PROJECTS: ProjectData[] = [
     results: [
       { metric: '1.1 → 2.5', label: '리포트 1건당 활성 사용자 (약 2.27배)' },
       { metric: '3.3 → 6.6', label: '리포트 1건당 활성 세션 수 (약 2배)' },
-      { metric: '30분 / 200위', label: '랭킹 스크린샷 주기 · 자동 판별 범위' },
-      { metric: '변조 불가능', label: '외부 증거 기반 ROI 도구' },
     ],
   },
   {
@@ -76,7 +74,6 @@ const PROJECTS: ProjectData[] = [
       { metric: '−4.25%p', label: '진입 → 스텝1 이탈률' },
       { metric: '+33%', label: '스텝1 통과율 (약 1.33배)' },
       { metric: '약 2.25배', label: '동일 트래픽 기준 신청 완료 수' },
-      { metric: '80%+', label: '큐텐 단일 채널 자동화 커버리지' },
     ],
   },
   {
