@@ -17,6 +17,7 @@ type Project = {
   desc: string
   metric: string
   features?: Feature[]
+  link?: string
 }
 
 const projects: Project[] = [
@@ -34,6 +35,7 @@ const projects: Project[] = [
     ],
     desc: "FC서울 팬 모임 '수호신'의 커뮤니티·굿즈·원정버스 예약 플랫폼. Next.js App Router 기반 풀스택으로 직접 개발·운영 중. 카카오 OAuth, SEO 최적화, Redis 캐싱 적용.",
     metric: 'DAU 최다 2,300',
+    link: 'https://fcseoul12.com',
   },
   {
     tag: 'PLATFORM',
@@ -127,7 +129,11 @@ export default function Projects() {
           return (
             <div
               key={i}
-              onClick={() => setOpen(isOpen ? -1 : i)}
+              onClick={() =>
+                p.link
+                  ? window.open(p.link, '_blank', 'noopener,noreferrer')
+                  : setOpen(isOpen ? -1 : i)
+              }
               className={`bg-[var(--surface)] border border-[var(--line)] rounded-[var(--r-md)] p-[22px_24px] cursor-pointer [transition:box-shadow_var(--dur)_var(--ease)] ${
                 isOpen
                   ? 'shadow-[var(--shadow-md)]'
