@@ -2,10 +2,10 @@ const skills = [
   { k: 'Languages', v: 'JavaScript · TypeScript' },
   { k: 'Frameworks', v: 'React · Next.js · Vue · Nuxt · React Native' },
   { k: 'Styling', v: 'Tailwind CSS · SCSS · Emotion' },
-  { k: 'Data / State', v: 'React-Query · GraphQL · Zustand · Redux' },
+  { k: 'Data / State', v: 'Tanstack Query  · Zustand · Redux R2DBC · Jooq' },
   {
     k: 'Backend',
-    v: 'Node.js · NestJS · Prisma · MySQL · Kotlin · Spring WebFlux · R2DBC',
+    v: 'Node.js · NestJS · Express Kotlin · Spring Boot',
   },
   { k: 'Infra', v: 'AWS · Vercel · Firebase · Supabase' },
 ]
@@ -48,10 +48,16 @@ const labelStyle = {
 
 export default function SideRail() {
   return (
-    <aside style={{ display: 'grid', gap: 28, alignContent: 'start' }}>
+    <aside style={{ display: 'grid', gap: 'clamp(20px, 4vw, 32px)' }}>
       <div>
         <div style={labelStyle}>Skills</div>
-        <div style={{ display: 'grid', gap: 10 }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '10px clamp(20px, 4vw, 32px)',
+          }}
+        >
           {skills.map((s) => (
             <div key={s.k}>
               <div
@@ -75,104 +81,93 @@ export default function SideRail() {
         </div>
       </div>
 
-      <div>
-        <div style={labelStyle}>Education</div>
-        <div style={{ display: 'grid', gap: 14 }}>
-          {edu.map((e) => (
-            <div key={e.t}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 11.5,
-                  color: 'var(--ink-4)',
-                }}
-              >
-                {e.d}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 2fr',
+          gap: 'clamp(20px, 4vw, 32px)',
+        }}
+      >
+        <div>
+          <div style={labelStyle}>Education</div>
+          <div style={{ display: 'grid', gap: 14 }}>
+            {edu.map((e) => (
+              <div key={e.t}>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 11.5,
+                    color: 'var(--ink-4)',
+                  }}
+                >
+                  {e.d}
+                </div>
+                <div
+                  style={{
+                    fontSize: 13.5,
+                    fontWeight: 700,
+                    color: 'var(--ink)',
+                    marginTop: 3,
+                  }}
+                >
+                  {e.t}
+                </div>
+                <div
+                  style={{
+                    fontSize: 12.5,
+                    color: 'var(--ink-3)',
+                    marginTop: 2,
+                  }}
+                >
+                  {e.s}
+                </div>
               </div>
-              <div
-                style={{
-                  fontSize: 13.5,
-                  fontWeight: 700,
-                  color: 'var(--ink)',
-                  marginTop: 3,
-                }}
-              >
-                {e.t}
-              </div>
-              <div
-                style={{ fontSize: 12.5, color: 'var(--ink-3)', marginTop: 2 }}
-              >
-                {e.s}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <div style={labelStyle}>Side Project</div>
-        <div style={{ display: 'grid', gap: 12 }}>
-          {projects.map((p) => (
-            <div key={p.t}>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: 13.5,
-                  fontWeight: 700,
-                  color: 'var(--ink)',
-                  textDecoration: 'none',
-                }}
-              >
-                {p.t}
-              </a>
-              <div
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 12,
-                  color: 'var(--accent)',
-                  marginTop: 2,
-                }}
-              >
-                {p.m}
+        <div>
+          <div style={labelStyle}>Side Project</div>
+          <div style={{ display: 'grid', gap: 12 }}>
+            {projects.map((p) => (
+              <div key={p.t}>
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: 13.5,
+                    fontWeight: 700,
+                    color: 'var(--ink)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {p.t}
+                </a>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 12,
+                    color: 'var(--accent)',
+                    marginTop: 2,
+                  }}
+                >
+                  {p.m}
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 11.5,
+                    color: 'var(--ink-4)',
+                    marginTop: 3,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {p.s}
+                </div>
               </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 11.5,
-                  color: 'var(--ink-4)',
-                  marginTop: 3,
-                  lineHeight: 1.5,
-                }}
-              >
-                {p.s}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <div style={labelStyle}>Links</div>
-        <div style={{ display: 'grid', gap: 9 }}>
-          {links.map((l) => (
-            <a
-              key={l.v}
-              href={l.href}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                textDecoration: 'none',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 12.5,
-                color: 'var(--ink-2)',
-              }}
-            >
-              {l.v}
-            </a>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </aside>

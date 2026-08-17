@@ -35,20 +35,17 @@ export default function ResumePage() {
         <ResumeHeader />
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 256px',
-            gap: 'clamp(28px, 5vw, 52px)',
             paddingTop: 28,
+            paddingBottom: 28,
+            borderBottom: '1px solid var(--line)',
           }}
         >
-          <div>
-            <Section label="Experience" sub="5+ yrs">
-              <Experience />
-            </Section>
-          </div>
-          <div>
-            <SideRail />
-          </div>
+          <SideRail />
+        </div>
+        <div style={{ paddingTop: 28 }}>
+          <Section label="Experience" sub="5+ yrs">
+            <Experience />
+          </Section>
         </div>
       </div>
     </div>
