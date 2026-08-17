@@ -1,4 +1,13 @@
-const roles = [
+type Bullet = string | { text: string; sub: string[] }
+
+const roles: {
+  company: string
+  role: string
+  period: string
+  desc: string
+  stack: string[]
+  bullets: Bullet[]
+}[] = [
   {
     company: '스토어링크',
     role: 'FrontEnd Developer',
@@ -14,7 +23,28 @@ const roles = [
       'Kotlin',
     ],
     bullets: [
-      '백엔드 개발자 출산휴가 공백 기간, AI 에이전트(서비스별 경계·업무규칙 문서화를 통한 하네스 + 설계, 구현, 리뷰어 등 역할이 분리된 서브에이전트)를 활용해 퍼그샵 일본 사용자/관리자 백엔드(Kotlin/Spring WebFlux, R2DBC) 백엔드 업무 대체 수행',
+      {
+        text: '백엔드 개발자 출산휴가 공백 기간, AI 에이전트를 활용해 퍼그샵 일본 사용자/관리자 백엔드(Kotlin/Spring WebFlux, R2DBC) 업무 대체 수행',
+        sub: [
+          '서비스별 경계·업무 규칙을 문서로 구조화한 하네스로 세션 시작마다 AI가 해당 서비스에서 하면 안 되는 것과 규칙을 먼저 로드하도록 강제 — 국가·프로덕트가 얽힌 모노레포에서 다른 서비스 코드를 오염시키는 실수 차단',
+          '설계(Architect) → 도메인 검증(Domain Expert) → 구현(Backend Developer) → 리뷰(Reviewer) → QA로 역할이 분리된 서브에이전트 워크플로우로, 판단하기 어려운 영역(도메인 규칙, 코드 리뷰 기준)을 서로 검증',
+        ],
+      },
+      {
+        text: '프론트엔드 설계, 구현 역할이 분리된 서브에이전트 워크플로우로 개발',
+        sub: [
+          '기존 비즈니스 로직이 정리된 문서들과 새로운 기획 문서/디자인 목업을 스캔해 구현 범위를 분석하고 구현해야 하는 작업이 기존 구현에 미칠 영향 범위를 분석(분석 에이전트)',
+          '상기한 설계 문서를 포함해 기존의 컨벤션 스캔 및 정의된 업무 순서를 바탕으로 구현 플랜 문서화(플랜 에이전트)',
+          '플랜 문서에서 확정된 내용만을 바탕으로 코딩을 수행(구현 에이전트) — 분석·플랜 단계에서 논의되지 않은 내용의 임의 구현(할루시네이션)을 금지해 설계 의도와 어긋난 결과물 발생 가능성 줄임',
+        ],
+      },
+      {
+        text: '기존 기능·엣지케이스 기반 Playwright e2e 테스트 설계·구현을 AI 에이전트 워크플로우로 편입',
+        sub: [
+          'data-testid 명명 규칙, 테스트 코드 구현 패턴, 값 주입이 어려운 UI에 한정된 우회 방법을 스킬로 문서화해 AI가 일관된 구조로 테스트 코드를 설계·작성하도록 강제',
+          '핵심 비즈니스 로직을 한국어/일본어 서비스 동시 검증하도록 설계 — 리팩터링 시 기존 기능 누락 방지 및 QA 핑퐁으로 인한 시간 소요 절감',
+        ],
+      },
       '퍼그샵 한국·일본 사용자/관리자 페이지 리뉴얼 프론트엔드 개발',
       'i18n 다국어 처리로 KO/JP 동시 운영 효율화 및 공통 컴포넌트 설계',
       '기능 개발 및 유지보수 전반 담당',
@@ -153,28 +183,68 @@ export default function Experience() {
                 gap: 7,
               }}
             >
-              {r.bullets.map((b, j) => (
-                <li
-                  key={j}
-                  style={{
-                    display: 'flex',
-                    gap: 10,
-                    font: '400 14.5px/1.6 var(--font-sans)',
-                    color: 'var(--ink-2)',
-                  }}
-                >
-                  <span
-                    style={{
-                      color: 'var(--accent)',
-                      marginTop: 1,
-                      flexShrink: 0,
-                    }}
-                  >
-                    —
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))}
+              {r.bullets.map((b, j) => {
+                const text = typeof b === 'string' ? b : b.text
+                const sub = typeof b === 'string' ? undefined : b.sub
+                return (
+                  <li key={j}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        gap: 10,
+                        font: '400 14.5px/1.6 var(--font-sans)',
+                        color: 'var(--ink-2)',
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: 'var(--accent)',
+                          marginTop: 1,
+                          flexShrink: 0,
+                        }}
+                      >
+                        —
+                      </span>
+                      <span>{text}</span>
+                    </div>
+                    {sub && (
+                      <ul
+                        style={{
+                          margin: '7px 0 0',
+                          padding: 0,
+                          listStyle: 'none',
+                          display: 'grid',
+                          gap: 6,
+                          paddingLeft: 20,
+                        }}
+                      >
+                        {sub.map((s, k) => (
+                          <li
+                            key={k}
+                            style={{
+                              display: 'flex',
+                              gap: 8,
+                              font: '400 13.5px/1.6 var(--font-sans)',
+                              color: 'var(--ink-3)',
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: 'var(--ink-4)',
+                                marginTop: 1,
+                                flexShrink: 0,
+                              }}
+                            >
+                              ·
+                            </span>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
             <div
               style={{
