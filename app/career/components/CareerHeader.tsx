@@ -25,7 +25,7 @@ export default function CareerHeader() {
             </span>
           </h1>
         </div>
-        <div className="grid gap-[5px] text-right">
+        <div className="no-print grid gap-[5px] text-right">
           {meta.map((m) => (
             <span
               key={m.v}
